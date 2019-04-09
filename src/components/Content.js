@@ -4,20 +4,24 @@ import { connect } from "react-redux";
 import { Grid } from 'semantic-ui-react';
 
 import List from './List';
+
+
 class Content extends Component {
     constructor(props) {
         super(props);
         this.state = {
             data: null
         }
-    } 
+    }
+    componentDidUpdate = () => {
+        console.log(this.props.boards[1].listIds, "MIB");
+    }
 
     renderBoard = () => {
-        
         return this.props.boards[1].listIds.map(list => {
             return (
-                <Grid.Column width={5}>
-                    <List id={list} />
+                <Grid.Column key={list} width={4}>
+                    <List key={list} id={list} />
                 </Grid.Column>
             );
         });
@@ -25,10 +29,11 @@ class Content extends Component {
 
     render() {
         return(
+            <div className="mt-4 ml-4">
             <Grid>
-                <div>Hello!</div>
-                {this.state.data && this.renderBoard()}
+                {!this.props.loading && this.renderBoard()}
             </Grid>
+            </div>
         );
     }
 
@@ -36,7 +41,8 @@ class Content extends Component {
 
 const mapStateToProps = store => ({
     lists: store.lists,
-    boards: store.boards.boards
+    boards: store.boards.boards,
+    loading: store.loading
 })
 
 export default connect(mapStateToProps, null)(Content); 

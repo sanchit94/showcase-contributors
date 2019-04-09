@@ -2,21 +2,29 @@ import React, { Component } from 'react';
 import _ from 'underscore';
 
 import CardInfo from './CardInfo';
+import { connect } from 'react-redux';
 
 
-export default class List extends Component {
+class List extends Component {
     renderCards = () => {
-        const cardIndexed = _.indexBy(this.props.superState.cards);
-        this.props.data.cardIds.map(cardId => {
-            return <CardInfo id={cardId} data={cardIndexed[cardId]} />
+        const { id } = this.props;
+        return this.props.lists[id].cardIds.map(cardId => {
+            return <CardInfo key={cardId} id={cardId} />
         });
     }
     render() {
         return(
             <div>
-                {this.props.data}
+                {!this.props.loading && this.renderCards()}
             </div>
         );
     }
-
 }
+
+const mapStateToProps = store => ({
+    cards: store.cards,
+    lists: store.lists,
+    loading: store.loading
+});
+
+export default connect(mapStateToProps, null)(List);

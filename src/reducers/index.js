@@ -4,7 +4,8 @@ import * as asyncInitialState from 'redux-async-initial-state';
 const defaultState = {
   boards: {},
   lists: {},
-  cards: {}
+  cards: {},
+  loading: true
 };
 
 const appReducer = (state = defaultState, action) => {

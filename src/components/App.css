@@ -1,0 +1,32 @@
+body {
+    background-color: #F6F8F9;
+}
+
+.mt-2 {
+    margin-top: 1em;
+}
+.mt-4 {
+    margin-top: 2em;
+}
+
+.mt--2 {
+    margin-top: -1em;
+}
+
+.mb-2 {
+    margin-bottom: 1em!important;
+}
+
+.ml-4 {
+    margin-left: 2em;
+}
+
+
+.card-header {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.card-norad {
+    border-radius: 0;
+}

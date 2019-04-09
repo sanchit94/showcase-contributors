@@ -27,6 +27,7 @@ export const loadStore = () => {
       };
       listLocal = _.indexBy(res.lists, 'id');
       res.lists = listLocal;
+      res.loading = false;
       return res;
     })
       .then(resolve);

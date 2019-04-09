@@ -1,0 +1,1 @@
+export const domain = "https://boiling-earth-76159.herokuapp.com";

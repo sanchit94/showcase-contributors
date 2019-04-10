@@ -32,8 +32,6 @@ body {
 }
 
 .board {
-    display: flex;
-    flex: 1 1;
     height: calc(100% - 42px);
     width: 100%;
     overflow: auto;

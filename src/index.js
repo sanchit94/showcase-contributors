@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom';
 import "semantic-ui-css/semantic.min.css";
 import './index.css';
 import Root from './Root';
+import { HashRouter } from "react-router-dom";
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
     <Root>
-        <App />
+        <HashRouter>
+            <App />
+        </HashRouter>
     </Root>,
     document.getElementById('root'));
 

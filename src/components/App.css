@@ -48,9 +48,33 @@ body {
     font-weight: 600;
 }
 
+.card__labels__1 {
+    height: 8px;
+    width: 4em;
+    background-color: #EC4A9D;
+    border-radius: 5em;
+    margin: 1.5rem 0 -0.5rem 1.1rem;
+  }
+  
+  .card__labels__2 {
+    height: 8px;
+    width: 4em;
+    background-color: #2CC6AB;
+    border-radius: 5em;
+    margin: 1.5rem 0 -0.5rem 1.1rem;
+  }
+  .card__labels__3 {
+    height: 8px;
+    width: 4em;
+    background-color: #09A9ED;
+    border-radius: 5em;
+    margin: 1.5rem 0 -0.5rem 1.1rem;
+  }
+
 .ui.card > .image {
     background: none;
 }
+
 
 .ui.card > .content {
     border-top: none;

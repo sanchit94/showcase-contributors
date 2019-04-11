@@ -7,11 +7,31 @@ import { domain } from '../constants'
 
 class CardInfo extends Component {
 
-    renderCard = () => {
+    getIndex = () => {
         const { id } = this.props;
         const index = this.props.cards.findIndex(
             card => card.id === id
         );
+        return index;
+
+    }
+
+    renderDate = () => {
+        const index = this.getIndex();
+        let { timeStamp } = this.props.cards[index];
+        console.log(timeStamp, "card")
+        timeStamp = new Date(timeStamp);
+        console.log(typeof cardTime, "TimeStamp")
+        const now = new Date();
+        if (timeStamp.toDateString() === now.toDateString()) {
+            return "Today";
+        }
+        return timeStamp.toDateString().slice(0,9);
+
+    }
+
+    renderCard = () => {
+        const index = this.getIndex();
         const imageSource = `${domain}/uploads/${this.props.cards[index].cardImage}`;
 
         const panel = [{
@@ -21,7 +41,7 @@ class CardInfo extends Component {
                     <div>
                 <Card.Header className="card-header">{this.props.cards[index].heading}</Card.Header>
                 <Card.Meta className="mt-2">
-                    <span className='date'>Joined in 2015</span>
+                    <span className='date'>{this.renderDate()}</span>
                 </Card.Meta>
                 </div>),
                 icon: ''
@@ -33,7 +53,10 @@ class CardInfo extends Component {
 
         return(
             <Card className="raised card-norad mb-2" fluid>
+                <div></div> {/* For avoiding wierd card css from semantic-ui */}
                 {this.props.cards[index].cardImage && <Image src={imageSource} alt="Couldn't load image" />}
+                <div className={`card__labels__${this.props.cards[index].priority || 2}`}>
+                </div>
                 <Card.Content>
                     <Accordion className="mt--2" panels={panel} fluid />
                 </Card.Content>

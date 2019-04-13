@@ -6,7 +6,7 @@ import { Grid, Header } from 'semantic-ui-react';
 class AppBar extends Component {
     renderHeading = () => {
         return this.props.boards[1].listIds.map(listId => {
-            return (<Grid.Column key={listId} width={4}>
+            return (<Grid.Column key={listId} width={3}>
                         <Header as='h3'>{this.props.lists[listId].name}</Header>
                     </Grid.Column>)
         })

@@ -19,9 +19,7 @@ class CardInfo extends Component {
     renderDate = () => {
         const index = this.getIndex();
         let { timeStamp } = this.props.cards[index];
-        console.log(timeStamp, "card")
         timeStamp = new Date(timeStamp);
-        console.log(typeof cardTime, "TimeStamp")
         const now = new Date();
         if (timeStamp.toDateString() === now.toDateString()) {
             return "Today";
@@ -40,9 +38,9 @@ class CardInfo extends Component {
                 content: (
                     <div>
                 <Card.Header className="card-header">{this.props.cards[index].heading}</Card.Header>
-                <Card.Meta className="mt-2">
+                {/* <Card.Meta className="mt-2">
                     <span className='date'>{this.renderDate()}</span>
-                </Card.Meta>
+                </Card.Meta> */}
                 </div>),
                 icon: ''
             },

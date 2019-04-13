@@ -20,7 +20,7 @@ class Board extends Component {
     renderBoard = () => {
         return this.props.boards[1].listIds.map(list => {
             return (
-                <Grid.Column key={list} width={4}>
+                <Grid.Column key={list} width={3}>
                     <List key={list} id={list} />
                 </Grid.Column>
             );

@@ -112,7 +112,7 @@ body {
     background: none;
 }
 
-.ui.card .card-header {
+.ui.card .card-header.pointed {
     cursor: pointer;
 }
 

@@ -77,7 +77,7 @@ function CardInfo(props) {
                 <div className={`card__labels__${props.cards[index].priority || 2}`}>
                 </div>
                 <Card.Content>
-                <Card.Header className="card-header" onClick={expandModal}>
+                <Card.Header className={`card-header ${props.cards[index].content && 'pointed'}`} onClick={expandModal}>
                     {props.cards[index].heading}
                     { 
                         props.cards[index] && props.cards[index].content && 

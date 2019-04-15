@@ -69,6 +69,7 @@ body {
     -ms-user-select:none;
     user-select:none;
     -o-user-select:none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .ui.card>.content {

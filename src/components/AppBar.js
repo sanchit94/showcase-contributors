@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 
-import { Grid, Header } from 'semantic-ui-react';
+import { Header } from 'semantic-ui-react';
 
 class AppBar extends Component {
     renderHeading = () => {
         return this.props.boards[1].listIds.map(listId => {
-            return (<Grid.Column key={listId} width={3}>
+            return (<div className="list-responsive" key={listId} width={3}>
                         <Header as='h3'>{this.props.lists[listId].name}</Header>
-                    </Grid.Column>)
+                    </div>)
         })
     }
 
     render() {
         return(
         <header className="app-bar mt-4 ml-4">
-            <Grid>
+            <div className="d-flex">
                 {!this.props.loading && this.renderHeading()}
-            </Grid>
+            </div>
         </header>
             
         );

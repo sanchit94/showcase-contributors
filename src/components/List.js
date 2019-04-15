@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import _ from 'underscore';
 
 import CardInfo from './CardInfo';
 import { connect } from 'react-redux';

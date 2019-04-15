@@ -28,7 +28,7 @@ class Board extends Component {
     render() {
         return(
             <div className="board">
-                <div className="mt-4 ml-4 scroll-overflow d-flex">
+                <div className="ml-4 scroll-overflow d-flex">
                     {!this.props.loading && this.renderBoard()}
                 </div>
             </div>

@@ -14,8 +14,8 @@ class Board extends Component {
     }
     renderHeading = () => {
         return this.props.boards[1].listIds.map(listId => {
-            return (<div className="list-responsive" key={listId} width={3}>
-                        <Header as='h3'>{this.props.lists[listId].name}</Header>
+            return (<div className="list-responsive mt-2" key={listId}>
+                        <h3>{this.props.lists[listId].name}</h3>
                     </div>)
         })
     }
@@ -23,7 +23,7 @@ class Board extends Component {
     renderBoard = () => {
         return this.props.boards[1].listIds.map(list => {
             return (
-                <div className="list-responsive" key={list} width={3}>
+                <div className="list-responsive" key={list}>
                     <List key={list} id={list} />
                 </div>
             );

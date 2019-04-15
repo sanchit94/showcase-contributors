@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 
-import { Grid } from 'semantic-ui-react';
-
 import List from './List';
 
 
@@ -20,9 +18,9 @@ class Board extends Component {
     renderBoard = () => {
         return this.props.boards[1].listIds.map(list => {
             return (
-                <Grid.Column key={list} width={3}>
+                <div className="list-responsive" key={list} width={3}>
                     <List key={list} id={list} />
-                </Grid.Column>
+                </div>
             );
         });
     }
@@ -30,10 +28,8 @@ class Board extends Component {
     render() {
         return(
             <div className="board">
-                <div className="mt-4 ml-4 scroll-overflow">
-                <Grid>
+                <div className="mt-4 ml-4 scroll-overflow d-flex">
                     {!this.props.loading && this.renderBoard()}
-                </Grid>
                 </div>
             </div>
         );

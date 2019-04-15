@@ -5,7 +5,7 @@ body {
 
 .App {
     height: 100vh;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 .mt-2 {
@@ -35,6 +35,19 @@ body {
     overflow: hidden;
 }
 
+.app-over {
+    overflow: auto;
+}
+
+.app-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #F6F8F9;
+    z-index: 100;
+    padding: 0.5em 1em;
+}
+
 .app-bar {
     height: 2em;
     /* box-shadow: 0 0 0 1px #d4d4d5, 0 2px 4px 0 rgba(34,36,38,.12), 0 2px 10px 0 rgba(34,36,38,.15); */
@@ -45,7 +58,7 @@ body {
     width: 100%;
 }
 
-.scroll-overflow {
+.auto-height {
     height: auto;
 }
 

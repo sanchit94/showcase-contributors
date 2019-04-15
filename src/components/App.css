@@ -64,8 +64,6 @@ body {
 
 .card-header {
     margin-top: 1em!important;
-    font-size: 1.2em;
-    font-weight: 600;
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select:none;
@@ -75,6 +73,8 @@ body {
 
 .ui.card>.content {
     padding: 0 1em 1em;
+    overflow-wrap: break-word;
+    white-space: pre-line;
 }
 
 .card__labels__1 {

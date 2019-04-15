@@ -10,12 +10,13 @@ const style = {
     },
     button: {
         display: "inline-block",
-        float: "right"
+        float: "right",
+        "margin-top": "0.5em"
     }
     
 }
 
-function AppBar(props) {
+function AppBar() {
     return(
         <div className="app-header">
             <Image src={logo} style={style.image} />

@@ -52,8 +52,13 @@ body {
 
 
 .card-header {
+    margin-top: 1em!important;
     font-size: 1.2em;
     font-weight: 600;
+}
+
+.ui.card>.content {
+    padding: 0 1em 1em;
 }
 
 .card__labels__1 {

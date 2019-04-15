@@ -59,7 +59,6 @@ function CardInfo(props) {
     // }
 
     const expandModal = () => {
-        console.log(open);
         return setValue(state => {
             return state ? 0 : 1
         });

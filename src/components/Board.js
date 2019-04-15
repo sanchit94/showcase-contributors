@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 
+import { Header } from 'semantic-ui-react';
 import List from './List';
 
 
@@ -11,14 +12,18 @@ class Board extends Component {
             data: null
         }
     }
-    componentDidUpdate = () => {
-        console.log(this.props.boards[1].listIds, "MIB");
+    renderHeading = () => {
+        return this.props.boards[1].listIds.map(listId => {
+            return (<div className="list-responsive mt-2" key={listId}>
+                        <h3>{this.props.lists[listId].name}</h3>
+                    </div>)
+        })
     }
 
     renderBoard = () => {
         return this.props.boards[1].listIds.map(list => {
             return (
-                <div className="list-responsive" key={list} width={3}>
+                <div className="list-responsive" key={list}>
                     <List key={list} id={list} />
                 </div>
             );
@@ -27,9 +32,16 @@ class Board extends Component {
 
     render() {
         return(
-            <div className="board">
-                <div className="mt-4 ml-4 scroll-overflow d-flex">
-                    {!this.props.loading && this.renderBoard()}
+            <div className="app-over">
+                <header className="app-bar mt-4">
+                <div className="d-flex">
+                    {!this.props.loading && this.renderHeading()}
+                </div>
+                </header>
+                <div className="board">
+                    <div className="auto-height d-flex">
+                        {!this.props.loading && this.renderBoard()}
+                    </div>
                 </div>
             </div>
         );

@@ -12,7 +12,7 @@ import { domain } from '../constants';
 const Content = styled(animated.div)`
   will-change: transform, height;
   overflow: hidden;
-`
+`;
   
 
 function CardInfo(props) {

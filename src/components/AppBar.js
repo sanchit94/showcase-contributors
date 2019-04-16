@@ -6,18 +6,17 @@ import logo from '../images/logo.png';
 const style = {
     image: {
         height: "48px",
-        display: "inline-block"
+        "margin-right": "auto",
     },
     centerText: {
-        display: "inline-block",
         "flex-grow": "1",
         "line-height": "1em",
         margin: "0.5em",
         "text-align": "center"
     },
     button: {
-        display: "inline-block",
         float: "right",
+        "margin-left": "auto"
     }
     
 }
@@ -25,9 +24,9 @@ const style = {
 function AppBar() {
     return(
         <div className="app-header">
-            <Image src={logo} style={style.image} />
-            <h2 style={style.centerText}>Infino Contributors</h2>
-            <Button style={style.button}>Suggest Features</Button>
+            <Image className="d-inline-block" src={logo} style={style.image} />
+            <h2 className="d-inline-block visible-md" style={style.centerText}>Infino Contributors</h2>
+            <Button className="d-inline-block" style={style.button}>Suggest Features</Button>
         </div>
     );
 }

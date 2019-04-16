@@ -36,6 +36,10 @@ body {
     overflow: hidden;
 }
 
+.d-inline-block {
+    display: "inline-block",
+}
+
 .app-over {
     overflow: auto;
     padding-left: 1.5em;
@@ -157,4 +161,10 @@ body {
 
 .ui.card.card-norad {
     border-radius: 0.1em;
+}
+
+@media (max-width: 672px) {
+    .visible-md {
+        display: none;
+    }
 }

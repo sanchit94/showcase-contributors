@@ -58,10 +58,8 @@ function CardInfo(props) {
     //     return timeStamp.toDateString().slice(0,9);
     // }
 
-    const expandModal = () => {
-        return setValue(state => {
-            return state ? 0 : 1
-        });
+    const toggleModal = () => {
+        return setValue(state => state ? 0 : 1);
     }
 
     
@@ -77,7 +75,7 @@ function CardInfo(props) {
                 <div className={`card__labels__${props.cards[index].priority || 2}`}>
                 </div>
                 <Card.Content>
-                <Card.Header className={`card-header ${props.cards[index].content && 'pointed'}`} onClick={expandModal}>
+                <Card.Header className={`card-header ${props.cards[index].content && 'pointed'}`} onClick={toggleModal}>
                     {props.cards[index].heading}
                     { 
                         props.cards[index] && props.cards[index].content && 
@@ -94,11 +92,6 @@ function CardInfo(props) {
                 
                     </Card.Content>
             </Card>
-            {/* <Card style={{height, transform}} className="raised card-norad mb-2" fluid>
-            <Card.Content style={{height, transform}}>
-            
-            </Card.Content>
-            </Card> */}
             </div>
         );
     }

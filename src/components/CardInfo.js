@@ -40,8 +40,9 @@ function CardInfo(props) {
         const index = getIndex();
         return (
             <Content style={{height: open && previous === open ? 'auto' : height}}>
-            <animated.div className="anim-from-top hide-overflow" {...bind}>
-            {props.cards[index].content}
+            {/* Using dangerouslySetInnerHtml so that html can inserted instead of simple text. This can be risky as it can enable Cross Site Scripting, but we don't have that kind of data here so it's harmless for now. */}
+            <animated.div className="anim-from-top hide-overflow" {...bind} dangerouslySetInnerHTML={{__html: props.cards[index].content}}>
+            {/* {props.cards[index].content} */}
             </animated.div>
             </Content>
         );

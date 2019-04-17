@@ -7,28 +7,27 @@ export const loadStore = () => {
   return new Promise(resolve => {
     axios(`${domain}/state`)
     .then(res => {
-      res = res.data;
-      console.log(res)
-      var boardLocal = {}, listLocal = {};
-      boardLocal.boardIds = [];
-      boardLocal.boards = {};
-      res.boards.map(board => {
-        boardLocal.boardIds.push(board.id);
-        boardLocal.boards[board.id] = {
+      //Here we have to change the structure of response data to align with our redux state structure.
+      let data = res.data;
+      // Performing some reduce operations to change the structure of data[boards].
+      const baardRed = data.boards.reduce((acc, board) => {
+        acc[board.id] = {
           boardId: board.id,
           editing: false,
           listIds: board.listIds,
           name: board.name
-        };
-      });
-      res.boards = {
-        boards: boardLocal.boards,
-        boardIds: boardLocal.boardIds
+        }
+        return acc;
+      }, {});
+      const boardIds = data.boards.reduce((acc, board) => board.id, []);
+      // data[baords] needs to be an object with keys boards and boardIds, for it to match our state structure.
+      data.boards = {
+        boards: baardRed,
+        boardIds: boardIds
       };
-      listLocal = _.indexBy(res.lists, 'id');
-      res.lists = listLocal;
-      res.loading = false;
-      return res;
+      data.lists = _.indexBy(data.lists, 'id');
+      data.loading = false;
+      return data;
     })
       .then(resolve);
   });

@@ -16,6 +16,10 @@ body {
     margin-top: 2em;
 }
 
+.mt-8 {
+    margin-top: 4em;
+}
+
 .mt--2 {
     margin-top: -1em;
 }
@@ -87,8 +91,8 @@ body {
     padding: 1.2em;
 }
 
-.ui.card.card-norad:hover {
-    transform: scale(1.035);
+.pop-up:hover {
+    transform: translateY(-3px);
 }
 
 .ui.card>.content>.header:not(.ui) {
@@ -162,6 +166,11 @@ body {
 
 .ui.card.card-norad {
     border-radius: 0.1em;
+}
+
+.ui.card.card-norad.login {
+    width: 35%;
+    margin: 0 auto;
 }
 
 @media (max-width: 672px) {

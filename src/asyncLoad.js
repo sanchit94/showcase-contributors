@@ -3,7 +3,7 @@ import { domain } from './constants';
 
 import _ from 'underscore';
 
-export const loadStore = () => {
+export const loadStore = getCurrentState => {
   return new Promise(resolve => {
     axios(`${domain}/state`)
     .then(res => {
@@ -27,8 +27,20 @@ export const loadStore = () => {
       };
       data.lists = _.indexBy(data.lists, 'id');
       data.loading = false;
+      data.isLoggedIn = !!(localStorage.getItem('user'));
+      // data.user = localStorage.getItem('user') && "";
+      console.log(data)
       return data;
     })
-      .then(resolve);
+      .then(data => {
+        resolve({
+          ...getCurrentState(),
+          boards: data.boards,
+          lists: data.lists,
+          cards: data.cards,
+          loading: data.loading,
+          isLoggedIn: data.isLoggedIn
+        });
+      });
   });
 }

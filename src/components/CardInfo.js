@@ -36,6 +36,10 @@ function CardInfo(props) {
         return index;
     }
 
+    const getLiked = () => {
+
+    }
+
     const accordionContent = () => {
         const index = getIndex();
         return (
@@ -90,7 +94,7 @@ function CardInfo(props) {
                 { props.cards[index] && props.cards[index].content && accordionContent() }
                 </div>
                 </Card.Content>
-                <Card.Content><LikeNComment /></Card.Content>
+                <Card.Content><LikeNComment cardId={props.cards[index].id} index={index} /></Card.Content>
             </Card>
         );
     }

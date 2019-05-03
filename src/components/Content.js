@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import Board from './Board';
 import LoginForm from './LoginForm';
+import Farewell from './Farewell';
 import { loginAsync, login } from '../actions/login';
 import { Switch, Route } from 'react-router-dom';
 
@@ -20,6 +21,7 @@ class Content extends Component {
             <Switch>
                 <Route exact path="/" component={Board} />
                 <Route exact path="/login" component={LoginForm} />
+                <Route exact path="/logout" component={Farewell} />
             </Switch>
         );
     }

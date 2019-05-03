@@ -19,4 +19,10 @@ export const login = data => {
         type: actionTypes.LOGIN,
         payload: data
     }
-} 
+}
+
+export const logout = () => {
+    return {
+        type: actionTypes.LOGOUT
+    }
+}

@@ -37,6 +37,9 @@ const logReducer = (state = false, action) => {
     case actionTypes.LOGIN: {
       return true;
     }
+    case actionTypes.LOGOUT: {
+      return false;
+    }
     default:
     return state;
   }

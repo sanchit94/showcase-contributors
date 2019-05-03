@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
+import { useSpring, animated } from 'react-spring';
 
 import { Card, Image, Icon } from 'semantic-ui-react';
-import { useSpring, animated } from 'react-spring';
-import styled from 'styled-components';
-
 import { useMeasure, usePrevious } from './helpers/react-spring-helpers';
+
 import { domain } from '../constants';
+import LikeNComment from './LikeNComment';
 
 
 const Content = styled(animated.div)`
@@ -33,6 +34,9 @@ function CardInfo(props) {
             card => card.id === id
         );
         return index;
+    }
+
+    const getLiked = () => {
 
     }
 
@@ -69,8 +73,7 @@ function CardInfo(props) {
         const index = getIndex();
         const imageSource = `${domain}/uploads/${props.cards[index].cardImage}`;
         return(
-            <div>
-            <Card className="raised card-norad mb-2" fluid>
+            <Card className="raised card-norad mb-2 pop-up" fluid>
                 <div></div> {/* For avoiding wierd card css from semantic-ui */}
                 {props.cards[index].cardImage && <Image src={imageSource} alt="Couldn't load image" />}
                 <div className={`card__labels__${props.cards[index].priority || 2}`}>
@@ -90,10 +93,9 @@ function CardInfo(props) {
                     <div>
                 { props.cards[index] && props.cards[index].content && accordionContent() }
                 </div>
-                
-                    </Card.Content>
+                </Card.Content>
+                <Card.Content><LikeNComment cardId={props.cards[index].id} index={index} /></Card.Content>
             </Card>
-            </div>
         );
     }
         

@@ -4,6 +4,7 @@ import './App.css';
 import Content from './Content';
 import AppBar from './AppBar';
 import { loadInitialState } from '../actions';
+
 import { connect } from 'react-redux';
 
 class App extends Component {

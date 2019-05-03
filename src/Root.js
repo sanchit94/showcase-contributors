@@ -6,4 +6,4 @@ const Root = props => {
     return <Provider store={store}>{props.children}</Provider>;
   };
   
-  export default Root;
+export default Root;

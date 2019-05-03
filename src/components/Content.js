@@ -2,13 +2,26 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 
 import Board from './Board';
+import LoginForm from './LoginForm';
+import Farewell from './Farewell';
+import { loginAsync, login } from '../actions/login';
 import { Switch, Route } from 'react-router-dom';
 
 class Content extends Component {
+    componentDidMount = () => {
+        if (localStorage.getItem('user')) {
+            this.props.loginAsync(localStorage.getItem('user'))
+            .then(res => {
+              this.props.login(res.data);
+            });
+        }
+    }
     render() {
         return(
             <Switch>
                 <Route exact path="/" component={Board} />
+                <Route exact path="/login" component={LoginForm} />
+                <Route exact path="/logout" component={Farewell} />
             </Switch>
         );
     }
@@ -21,4 +34,4 @@ const mapStateToProps = store => ({
     loading: store.loading
 })
 
-export default connect(mapStateToProps, null)(Content); 
+export default connect(mapStateToProps, { loginAsync, login })(Content); 

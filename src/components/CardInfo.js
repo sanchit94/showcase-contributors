@@ -76,7 +76,7 @@ function CardInfo(props) {
                 </div>
                 <Card.Content>
                 <Card.Header className={`card-header ${props.cards[index].content && 'pointed'}`} onClick={toggleModal}>
-                    {props.cards[index].heading}
+                    <span style={{ display: "inline-block", width: "80%" }}>{props.cards[index].heading}</span>
                     { 
                         props.cards[index] && props.cards[index].content && 
                     <animated.div className="float-right" style={{transform}}>

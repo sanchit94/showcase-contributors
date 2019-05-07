@@ -49,20 +49,12 @@ function LikeNComment(props) {
     setOpened(!isOpened);
   }
 
-  const getColor = () => {
-    if (voted) {
-      return "red";
-    } else {
-      return null;
-    }
-  }
-
- 
 	return(
 		<div>
       <Icon className="pointer-cursor" size="large" name="heart outline" color="red" onClick={vote} />
+      <span style={{verticalAlign: "bottom"}}>{props.cards[props.index] && props.cards[props.index].votes}</span>
       <animated.div className="pointer-cursor" style={{transform, right, marginTop: '-1.55em', position: "relative", width: "fit-content"}}><Icon onClick={vote} size="large" color="red" name="heart" /></animated.div>
-      <span>{props.cards[props.index] && props.cards[props.index].votes}</span>
+      
       <ModalTopAligned open={isOpened} closeModal={closeModal} />
       
       {/* <Label as='a' basic pointing='left'>

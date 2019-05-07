@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 
 import Board from './Board';
-import LoginForm from './LoginForm';
+import Login from './Login';
 import Farewell from './Farewell';
 import { loginAsync, login } from '../actions/login';
 import { Switch, Route } from 'react-router-dom';
@@ -20,7 +20,7 @@ class Content extends Component {
         return(
             <Switch>
                 <Route exact path="/" component={Board} />
-                <Route exact path="/login" component={LoginForm} />
+                <Route exact path="/login" component={Login} />
                 <Route exact path="/logout" component={Farewell} />
             </Switch>
         );

@@ -31,7 +31,7 @@ class LoginForm extends Component {
 
 	renderLogin = () => {
 		return (
-			<Card className="raised card-norad mb-2 pop-up login" fluid>
+			<Card className="raised card-norad mb-2 login" fluid>
 				<Card.Header className="header-grey">
 					<div className="header-text">Welcome back</div>
 					<span role="img" aria-label="Namaste" className="font-lg">🙏</span>
@@ -53,19 +53,19 @@ class LoginForm extends Component {
 					<label><div className="card-body-text">Or Join With</div></label>
 					<div className="icon-holder">
 					<div className="social__item">
-					<a className="icon-links round social__icon--facebook fill">
+					<span className="icon-links round social__icon--facebook fill">
 					<Icon name="facebook f"></Icon>
-					</a>
+					</span>
 					</div>
 					<div className="social__item">
-					<a className="icon-links round social__icon--twitter fill">
+					<span className="icon-links round social__icon--twitter fill">
 					<Icon name="twitter"></Icon>
-					</a>
+					</span>
 					</div>
 					<div className="social__item">
-					<a className="icon-links round social__icon--googleplus fill">
+					<span className="icon-links round social__icon--googleplus fill">
 					<Icon name="google"></Icon>
-					</a>
+					</span>
 					</div>
 					</div>
 				</Form>

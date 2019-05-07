@@ -36,10 +36,6 @@ function CardInfo(props) {
         return index;
     }
 
-    const getLiked = () => {
-
-    }
-
     const accordionContent = () => {
         const index = getIndex();
         return (

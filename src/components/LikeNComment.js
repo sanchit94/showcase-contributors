@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import _ from 'underscore';
 
 import ModalTopAligned from './ReqModal';
-import { Button, Label, Icon } from 'semantic-ui-react';
+import { Icon } from 'semantic-ui-react';
 import { likeAsync, unlikeAsync } from '../actions/vote';
 import { incrementVotes, decrementVotes } from '../actions/card';
 import { useSpring, animated, config } from 'react-spring';

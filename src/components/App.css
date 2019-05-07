@@ -188,11 +188,6 @@ body {
     border-radius: 0.1em;
 }
 
-.ui.card.card-norad.login {
-    width: 25%;
-    margin: 0 auto;
-}
-
 @media (max-width: 672px) {
     .visible-md {
         display: none;
@@ -200,6 +195,11 @@ body {
 }
 
 /* For the Login route */
+
+.ui.fluid.card.login {
+    width: 90%;
+    margin: 0 auto;
+}
 
 .header-grey {
     background-color: #F6F7F8;

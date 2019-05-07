@@ -9,6 +9,8 @@ body {
     color: #222;;
 }
 
+/* Generic styles start */
+
 .mt-2 {
     margin-top: 1em;
 }
@@ -44,9 +46,23 @@ body {
     overflow: hidden;
 }
 
+.d-inline {
+    display: inline;
+}
+
+.d-none {
+    display: none;
+}
+
 .d-inline-block {
     display: "inline-block",
 }
+
+.pointer-cursor {
+    cursor: pointer;
+}
+
+/* Generic styles end here */
 
 .app-over {
     overflow: auto;

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { loadInitialState } from '../actions';
+import { loginAsync, login, logout } from '../actions/login';
 
-import { Header } from 'semantic-ui-react';
 import List from './List';
 
 
@@ -12,6 +13,23 @@ class Board extends Component {
             data: null
         }
     }
+    componentDidMount = () => {
+        
+        if (localStorage.getItem('user')) {
+            this.props.loginAsync(localStorage.getItem('user'))
+            .then(res => {
+              this.props.loadInitialState();
+              this.props.login(res.data);
+            })
+            .catch(() => {
+                console.log("Caught an error")
+                this.props.logout();
+            })
+        } else {
+            this.props.loadInitialState();
+        }
+    }
+
     renderHeading = () => {
         return this.props.boards[1].listIds.map(listId => {
             return (<div className="list-responsive mt-2" key={listId}>
@@ -32,7 +50,7 @@ class Board extends Component {
 
     render() {
         return(
-            <div className="app-over">
+            <div className="app-over content">
                 <header className="app-bar mt-4">
                 <div className="d-flex">
                     {!this.props.loading && this.renderHeading()}
@@ -55,4 +73,4 @@ const mapStateToProps = store => ({
     loading: store.loading
 })
 
-export default connect(mapStateToProps, null)(Board); 
+export default connect(mapStateToProps, { loginAsync, login, logout, loadInitialState })(Board); 

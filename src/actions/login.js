@@ -26,3 +26,23 @@ export const logout = () => {
         type: actionTypes.LOGOUT
     }
 }
+
+export const signupAsync = content => {
+    return () => {
+        return Axios({
+            method: "POST",
+            url: `${userDomain}/users/register`,
+            data: {
+                email: content.email,
+                name: content.name
+            }
+        });
+    }
+}
+
+export const signup = data => {
+    return {
+        type: actionTypes.SIGNUP,
+        payload: data
+    }
+}

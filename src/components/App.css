@@ -62,9 +62,17 @@ body {
     cursor: pointer;
 }
 
+.block-centered {
+    margin: 0 auto!important;
+}
+
+.text-center {
+    text-align: center;
+}
+
 /* Generic styles end here */
 
-.app-over {
+.app-over.content {
     overflow: auto;
     padding-left: 1.5em;
     margin-top: 3em;
@@ -196,9 +204,10 @@ body {
 
 /* For the Login route */
 
-.ui.fluid.card.login {
+.ui.fluid.card.login, .row > .four.wide.computer > .ui.segment {
     width: 90%;
     margin: 0 auto;
+    text-align: center;
 }
 
 .header-grey {

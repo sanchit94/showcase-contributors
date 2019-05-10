@@ -16,10 +16,8 @@ class LoginForm extends Component {
 		this.props.loginAsync(this.state.email)
 		.then(res => {
 			console.log(res.data);
-			localStorage.setItem('user', res.data.email);
 			this.props.login(res.data);
-			console.log(this.props.history)
-			this.props.history.push('/');
+			this.props.navigate();
 		});
 	}
 
@@ -43,13 +41,7 @@ class LoginForm extends Component {
 						<input name="email" onChange={this.onChange} placeholder="email address" />
 					</Form.Field>
 					<Button onClick={this.onSubmit} className="card-body-button">LOGIN</Button>
-					{/* <Form.Field
-						id='form-button-control-public'
-						control={Button}
-						content='Login'
-						onClick={this.onSubmit}
-						className="card-body-button"
-					/> */}
+					
 					<label><div className="card-body-text">Or Join With</div></label>
 					<div className="icon-holder">
 					<div className="social__item">

@@ -17,12 +17,12 @@ const Content = styled(animated.div)`
   
 
 function CardInfo(props) {
-    const [open, setValue] = useState(0);
-    const previous = usePrevious(open);
+    const [isOpen, setOpen] = useState(false);
+    const previous = usePrevious(isOpen);
     const [bind, { height: viewHeight }] = useMeasure();
     const { height, transform } = useSpring({
-        height: open ? `${viewHeight}px` : '0px',
-        transform: open ? `rotate(-180deg)`: `rotate(0deg)`,
+        height: isOpen ? `${viewHeight}px` : '0px',
+        transform: isOpen ? `rotate(-180deg)`: `rotate(0deg)`,
         from: {
             height: '0px',
             transform: 'rotate(0deg)'
@@ -39,7 +39,7 @@ function CardInfo(props) {
     const accordionContent = () => {
         const index = getIndex();
         return (
-            <Content style={{height: open && previous === open ? 'auto' : height}}>
+            <Content style={{height: isOpen && previous === isOpen ? 'auto' : height}}>
             {/* Using dangerouslySetInnerHtml so that html can inserted instead of simple text. This can be risky as it can enable Cross Site Scripting, but we don't have that kind of data here so it's harmless for now. */}
             <animated.div className="anim-from-top hide-overflow" {...bind} dangerouslySetInnerHTML={{__html: props.cards[index].content}}>
             {/* {props.cards[index].content} */}
@@ -60,7 +60,7 @@ function CardInfo(props) {
     // }
 
     const toggleModal = () => {
-        return setValue(state => state ? 0 : 1);
+        return setOpen(!isOpen);
     }
 
     

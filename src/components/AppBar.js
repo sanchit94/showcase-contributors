@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../actions/login';
 
-import { Image, Button } from 'semantic-ui-react';
+import { Image, Dropdown } from 'semantic-ui-react';
 import logo from '../images/logo.png';
 
 const style = {
@@ -17,35 +17,40 @@ const style = {
         textAlign: "left",
         margin: "auto"
     },
-    button: {
-        float: "right",
-        marginLeft : "auto"
+    dropdown: {
+        marginRight: "2.5em"
     }
-    
 }
 
-class AppBar extends React.Component {
+function AppBar(props) {
 
-    logOut = () => {
-        this.props.logout();
-        localStorage.setItem('user', '');
-        // props.history.push('/logout');
-        console.log(this.props.history);
+    const logOut = () => {
+        props.logout();
     }
-    render() {
-        return(
-            <div className="app-header">
-                <Image src={logo} style={style.image} />
-                <h2 className="visible-md" style={style.centerText}>Infino Contributors</h2>
-                {this.props.isLoggedIn && <Button style={style.button} onClick={this.logOut}><Link to="/logout">Logout</Link></Button>}
-                {!this.props.isLoggedIn && <Button style={style.button}><Link to="/login">Login</Link></Button>}
-                <Button style={style.button}><Link to="/">Roadmap</Link></Button>
-            </div>
-        );
 
+    const getName = () => {
+        
+        return localStorage.getItem('username') || "Not a member";
     }
-    
+
+    return(
+        <div className="app-header">
+            <Link to="/"><Image src={logo} style={style.image}/></Link>
+            <h2 className="visible-md" style={style.centerText}>Infino Contributors</h2>
+            <Dropdown text={getName()} style={style.dropdown}>
+            <Dropdown.Menu>
+            <Dropdown.Item><Link to="/">Roadmap</Link></Dropdown.Item>
+            {props.isLoggedIn && <Dropdown.Item onClick={logOut}><Link to="/logout">Logout</Link></Dropdown.Item>}
+            {!props.isLoggedIn && <Dropdown.Item><Link to="/login">Login</Link></Dropdown.Item>}
+            {!props.isLoggedIn && <Dropdown.Item><Link to="/signup">Signup</Link></Dropdown.Item>}
+            </Dropdown.Menu>
+            </Dropdown>
+            
+        </div>
+    );
+
 }
+    
 
 const mapStateToProps = store => {
     return {

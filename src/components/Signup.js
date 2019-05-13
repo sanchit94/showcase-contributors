@@ -57,7 +57,6 @@ class Signup extends Component {
                     <Grid.Column mobile={16} tablet={8} computer={7}><Image src={card} width="60%" /></Grid.Column>
                 </Grid.Row>
             </Grid>
-            
             </div>
         );
     }

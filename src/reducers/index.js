@@ -47,6 +47,9 @@ const reqReducer = (state = false, action) => {
     case actionTypes.SIGNUP: {
       return false;
     }
+    case actionTypes.FAILED_REQ: {
+      return false;
+    }
     default: {
       return state;
     }

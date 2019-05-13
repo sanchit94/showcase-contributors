@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { logout } from '../actions/user';
 
-import { Image, Dropdown } from 'semantic-ui-react';
+import { Image, Dropdown, Icon, Header } from 'semantic-ui-react';
 import logo from '../images/logo.png';
 
 const style = {
@@ -18,33 +18,66 @@ const style = {
         margin: "auto"
     },
     dropdown: {
-        marginRight: "2.5em"
+        marginRight: "6em"
     }
 }
 
+
+
 function AppBar(props) {
 
-    const logOut = () => {
-        props.logout();
+    const getOptions = () => {
+        if(props.isLoggedIn) {
+            return [
+                {
+                    key: 1,
+                    text: "Roadmap",
+                    value: 1,
+                    content: <NavLink to="/"><Header icon="map signs" content="Roadmap" /></NavLink>
+                },
+                {
+                    key: 2,
+                    text: "Logout",
+                    value: 2,
+                    content: <NavLink onClick={() => props.logout()} to="/logout"><Header icon="sign-out" content="Logout" /></NavLink>
+                }
+            ];
+        } else {
+            return [
+                {
+                    key: 1,
+                    text: "Roadmap",
+                    value: 1,
+                    content: <NavLink to="/"><Header icon="map signs" content="Roadmap" /></NavLink>
+                },
+                {
+                    key: 2,
+                    text: "Login",
+                    value: 2,
+                    content: <NavLink to="/login"><Header icon="sign-in" content="LogIn" /></NavLink>
+                },
+                {
+                    key: 3,
+                    text: "SignUp",
+                    value: 3,
+                    content: <NavLink to="/signup"><Header icon="signup" content="SignUp" /></NavLink>
+                }
+            ];
+        }
     }
 
     const getName = () => {
-        return localStorage.getItem('username') || "Not a member";
+        if(localStorage.getItem('username')) {
+            return `Hello, ${localStorage.getItem('username')}`
+        }
+        return "Hello, Contributor"
     }
 
     return(
         <div className="app-header">
             <Link to="/"><Image src={logo} style={style.image}/></Link>
             <h2 className="visible-md" style={style.centerText}>Infino Contributors</h2>
-            <Dropdown text={getName()} style={style.dropdown}>
-            <Dropdown.Menu>
-            <Dropdown.Item><Link to="/">Roadmap</Link></Dropdown.Item>
-            {props.isLoggedIn && <Dropdown.Item onClick={logOut}><Link to="/logout">Logout</Link></Dropdown.Item>}
-            {!props.isLoggedIn && <Dropdown.Item><Link to="/login">Login</Link></Dropdown.Item>}
-            {!props.isLoggedIn && <Dropdown.Item><Link to="/signup">Signup</Link></Dropdown.Item>}
-            </Dropdown.Menu>
-            </Dropdown>
-            
+            <Dropdown pointing options={getOptions()} text={getName()} style={style.dropdown} />           
         </div>
     );
 

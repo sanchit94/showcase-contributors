@@ -245,6 +245,18 @@ body {
     cursor: pointer!important;
 }
 
+.facebook.f.large {
+    background-color: #4b70ab!important;
+}
+
+.twitter.large {
+    background-color: #32b9e7!important;
+}
+
+.google.large {
+    background-color: #fa5432!important;
+}
+
 .icon-holder {
     width: fit-content;
     margin: 1.5em auto;

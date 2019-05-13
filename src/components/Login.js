@@ -3,9 +3,10 @@ import LoginForm from './LoginForm';
 import { Grid, Segment } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-function Login(props) {
+export default function(props) {
 
     const navigateToContent = () => {
+        console.log(props);
         props.history.push('/');
     }
 
@@ -20,10 +21,7 @@ function Login(props) {
                 <Grid.Row>
                     <Grid.Column mobile={16} tablet={8} computer={4}>
                         <Segment className="raised">
-                            New to Infino? 
-                            <Link to="/signup">
-                                Sign Up!
-                            </Link>
+                            New to Infino? <Link to="/signup"> Sign Up!</Link>
                         </Segment>                
                     </Grid.Column>
                 </Grid.Row>
@@ -31,5 +29,3 @@ function Login(props) {
         </div>
     );
 }
-
-export default Login;

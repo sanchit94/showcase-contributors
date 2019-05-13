@@ -8,6 +8,12 @@ const reqSend = () => {
     };
 }
 
+export const reqFailed = () => {
+    return {
+        type: actionTypes.FAILED_REQ
+    }
+}
+
 export const loginAsync = content => {
     return dispatch => {
         dispatch(reqSend());

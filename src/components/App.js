@@ -5,6 +5,7 @@ import Content from './Content';
 import AppBar from './AppBar';
 
 function App() {
+
   return (
     <div className="App">
       <AppBar />

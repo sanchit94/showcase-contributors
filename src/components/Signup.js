@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Image, Header, Grid, Form } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { signupAsync, signup } from '../actions/login';
+import { signupAsync, signup } from '../actions/user';
 
 import waitlist from '../images/waitlist.png';
 import card from '../images/card.png';
@@ -40,7 +40,7 @@ class Signup extends Component {
                     <Header as="h4" className="block-centered">Fill out the form and follow the steps</Header>
                 </Grid.Row>
                 <Grid.Row>
-                <Form className="block-centered" onSubmit={this.handleSubmit}>
+                <Form loading={this.props.reqSent} className="block-centered" onSubmit={this.handleSubmit}>
                     <Form.Group>
                     <Form.Input placeholder='Name' name='name' onChange={this.handleChange} />
                     <Form.Input placeholder='Email' name='email' onChange={this.handleChange} />
@@ -63,5 +63,11 @@ class Signup extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        reqSent: state.reqSent
+    }
+}
 
-export default connect(null, { signup, signupAsync })(Signup);
+
+export default connect(mapStateToProps, { signup, signupAsync })(Signup);

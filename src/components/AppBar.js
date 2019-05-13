@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logout } from '../actions/login';
+import { logout } from '../actions/user';
 
 import { Image, Dropdown } from 'semantic-ui-react';
 import logo from '../images/logo.png';
@@ -29,7 +29,6 @@ function AppBar(props) {
     }
 
     const getName = () => {
-        
         return localStorage.getItem('username') || "Not a member";
     }
 

@@ -1,17 +1,8 @@
 import * as asyncInitialState from 'redux-async-initial-state';
 import userReducer from './user';
-import cardReducer from './card';
+import voteReducer from './vote';
 import { combineReducers } from 'redux';
 import * as actionTypes from '../actions/types';
-
-
-// const defaultState = {
-//   boards: {},
-//   lists: {},
-//   cards: {},
-//   loading: true,
-//   isLoggedIn: false
-// };
 
 const boardReducer = (state = {}, action) => {
   switch (action.type) {
@@ -45,12 +36,30 @@ const logReducer = (state = false, action) => {
   }
 };
 
+const reqReducer = (state = false, action) => {
+  switch (action.type) {
+    case actionTypes.SENT_REQ: {
+      return true;
+    }
+    case actionTypes.LOGIN: {
+      return false;
+    }
+    case actionTypes.SIGNUP: {
+      return false;
+    }
+    default: {
+      return state;
+    }
+  }
+}
+
 
 export default asyncInitialState.outerReducer(combineReducers({
   boards: boardReducer,
   lists: listReducer,
-  cards: cardReducer,
+  cards: voteReducer,
   loading: loadingReducer,
   isLoggedIn: logReducer,
-  user: userReducer
+  user: userReducer,
+  reqSent: reqReducer
 }));

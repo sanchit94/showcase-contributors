@@ -5,7 +5,7 @@ import _ from 'underscore';
 import ModalTopAligned from './ReqModal';
 import { Icon } from 'semantic-ui-react';
 import { likeAsync, unlikeAsync } from '../actions/vote';
-import { incrementVotes, decrementVotes } from '../actions/card';
+import { incrementVotes, decrementVotes } from '../actions/vote';
 import { useSpring, animated, config } from 'react-spring';
 
 
@@ -77,7 +77,7 @@ const mapStateToProps = state => {
   return {
     cards: state.cards,
     user: state.user,
-    isLoggedIn: state.isLoggedIn
+    isLoggedIn: state.isLoggedIn    
   };
 }
 

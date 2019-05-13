@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Card, Form, Button, Icon } from 'semantic-ui-react';
+import { Card, Form, Button, Icon, Message } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
-import { loginAsync, login } from '../actions/login';
+import { loginAsync, login } from '../actions/user';
 
 class LoginForm extends Component {
 
@@ -24,7 +24,7 @@ class LoginForm extends Component {
 	onChange = e => {
 		this.setState({
 			[e.target.name]: e.target.value
-		})
+		});
 	}
 
 	renderLogin = () => {
@@ -35,12 +35,14 @@ class LoginForm extends Component {
 					<span role="img" aria-label="Namaste" className="font-lg">🙏</span>
 				</Card.Header>
 				<Card.Content>
-				<Form>
+				<Form loading={this.props.reqSent}>
 					<Form.Field>
 						<label><div className="card-body-text">Sign in with your email</div></label>
 						<input name="email" onChange={this.onChange} placeholder="email address" />
 					</Form.Field>
-					<Button onClick={this.onSubmit} className="card-body-button">LOGIN</Button>
+					<Button onClick={this.onSubmit} className="card-body-button">
+					LOGIN
+					</Button>
 					
 					<label><div className="card-body-text">Or Join With</div></label>
 					<div className="icon-holder">
@@ -60,6 +62,7 @@ class LoginForm extends Component {
 					</span>
 					</div>
 					</div>
+					<Message success header='Form Completed' content="You're all signed up for the newsletter" />
 				</Form>
 				</Card.Content>
 			</Card>
@@ -84,7 +87,7 @@ class LoginForm extends Component {
 
 const mapStateToProps = state => {
 	return {
-		isLoggedIn: state.isLoggedIn
+		reqSent: state.reqSent
 	}
 }
 

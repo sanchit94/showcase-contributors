@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { loadInitialState } from '../actions';
-import { loginAsync, login, logout } from '../actions/login';
+import { loginAsync, login, logout } from '../actions/user';
 
 import List from './List';
 

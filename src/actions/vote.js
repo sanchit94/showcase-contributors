@@ -1,4 +1,5 @@
 import Axios from "axios";
+import * as actionTypes from "./types";
 import { userDomain, domain } from "../constants";
 
 const email = localStorage.getItem('user');
@@ -39,5 +40,19 @@ export const unlikeAsync = content => {
         .then(function([acct, perms]) {
             console.log(acct);
         });
+    }
+}
+
+export const incrementVotes = cardId => {
+    return {
+        type: actionTypes.INCREMENT_VOTES,
+        payload: cardId
+    }
+}
+
+export const decrementVotes = cardId => {
+    return {
+        type: actionTypes.DECREMENT_VOTES,
+        payload: cardId
     }
 }

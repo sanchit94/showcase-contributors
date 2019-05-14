@@ -46,6 +46,10 @@ body {
     overflow: hidden;
 }
 
+.d-block {
+    display: block!important;
+}
+
 .d-inline {
     display: inline;
 }
@@ -111,6 +115,11 @@ body {
     display: flex;
     flex-direction: row;
 }
+/* 
+.vertically-center {
+    justify-content: center;
+    align-items: center;
+} */
 
 .list-responsive {
     align-self: flex-start;
@@ -204,10 +213,15 @@ body {
 
 /* For the Login route */
 
-.ui.fluid.card.login, .row > .four.wide.computer > .ui.segment {
+.ui.centered.middle {
+    height: 100vh;
+}
+
+.ui.fluid.card.login, .row > .four.wide.computer .ui.segment {
     width: 90%;
     margin: 0 auto;
     text-align: center;
+    border-radius: 0.1em;
 }
 
 .header-grey {
@@ -245,57 +259,20 @@ body {
     cursor: pointer!important;
 }
 
-.icon-holder {
-    width: fit-content;
-    margin: 1.5em auto;
+i.inverted.circular.icon {
+    cursor: pointer;
+    margin-right: 0.4em;
 }
 
-.social__item {
-    display: inline-block;
-    margin-right: 0.4em;
-  }
-  
-  
-  
-  .icon-links {
-      font-size: 1.2em;
-    color: white;
-    text-decoration: none;
-    border-radius: 100%;
-    width: 2em;
-    height: 2em;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .icon-links:hover {
-      color: white;
-  }
-  
-  
-  
-  .social__icon--facebook {
-    background-color: #4b70ab;
-  }
-  .social__icon--facebook:hover {
-    background-color: #405f91;
-  }
-  
-  .social__icon--twitter {
-    background-color: #32b9e7;
-  }
-  .social__icon--twitter:hover {
-    background-color: #2b9dc4;
-  }
-  
-  .social__icon--googleplus {
-    background-color: #fa5432;
-  }
-  .social__icon--googleplus:hover {
-    background-color: #d5472b;
-  }
-  .fa-google:before {
-    content: "";
-  }
+i.inverted.circular.icon.facebook.f.large {
+    background-color: #4b70ab!important;
+}
+
+i.inverted.circular.icon.twitter.large {
+    background-color: #32b9e7!important;
+}
+
+i.inverted.circular.icon.google.large {
+    background-color: #fa5432!important;
+}
+

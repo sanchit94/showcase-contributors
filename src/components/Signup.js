@@ -35,17 +35,17 @@ class Signup extends Component {
             <div>
             <Grid>
                 <Grid.Row className="mt-12">
-                    <Header as="h1" className="block-centered">You are about to be upgraded to Infino</Header>
+                    <Header as="h1" className="block-centered text-center w-80">You are about to Get Upgraded to Infino</Header>
                 </Grid.Row>
                 <Grid.Row>
                     <Header as="h4" className="block-centered">Fill out the form and follow the steps</Header>
                 </Grid.Row>
                 <Grid.Row>
-                <Form loading={this.props.reqSent} className="block-centered" onSubmit={this.handleSubmit}>
-                    <Form.Group>
+                <Form loading={this.props.reqSent} className="block-centered w-80" onSubmit={this.handleSubmit}>
+                    <Form.Group className="d-flex justify-center">
                     <Form.Input placeholder='Name' name='name' onChange={this.handleChange} />
                     <Form.Input placeholder='Email' name='email' onChange={this.handleChange} />
-                    <Form.Button content='Get Your Free Card' />
+                    <Form.Button className="greenish" content='Get Your Free Card' />
                     </Form.Group>
                 </Form>
                 </Grid.Row>

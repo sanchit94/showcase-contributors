@@ -42,6 +42,10 @@ body {
     margin-right: 1em;
 }
 
+.w-80 {
+    width: 80%;
+}
+
 .float-right {
     float: right;
 }
@@ -117,12 +121,13 @@ body {
     color: white
 }
 
-.ui.greenish.button {
+.ui.greenish.button, .field.greenish > .ui.button {
     background: #19d9b4;
     color: white;
 }
 
-.ui.greenish.button:hover {
+.ui.greenish.button:hover,
+.field.greenish > .ui.button:hover {
     background-color: #5ee4ca;
 }
 
@@ -139,11 +144,10 @@ body {
     display: flex;
     flex-direction: row;
 }
-/* 
-.vertically-center {
+
+.justify-center {
     justify-content: center;
-    align-items: center;
-} */
+}
 
 .list-responsive {
     align-self: flex-start;
@@ -298,5 +302,11 @@ i.inverted.circular.icon.twitter.large {
 
 i.inverted.circular.icon.google.large {
     background-color: #fa5432!important;
+}
+
+/* Sign Up Page Styling */
+
+.ui.form > .fields.d-flex.justify-center input {
+    margin-bottom: 1em;
 }
 

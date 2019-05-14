@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
 import { logout } from '../actions/user';
 
-import { Image, Dropdown, Icon, Header } from 'semantic-ui-react';
+import { Image, Dropdown, Header } from 'semantic-ui-react';
 import logo from '../images/logo.png';
 
 const style = {
@@ -39,7 +39,7 @@ function AppBar(props) {
                     key: 2,
                     text: "Logout",
                     value: 2,
-                    content: <NavLink onClick={() => props.logout()} to="/logout"><Header icon="sign-out" content="Logout" /></NavLink>
+                    content: <NavLink onClick={() => props.logout()} to="/logout"><Header icon="sign-out" content="Sign out" /></NavLink>
                 }
             ];
         } else {
@@ -54,13 +54,13 @@ function AppBar(props) {
                     key: 2,
                     text: "Login",
                     value: 2,
-                    content: <NavLink to="/login"><Header icon="sign-in" content="LogIn" /></NavLink>
+                    content: <NavLink to="/login"><Header icon="sign-in" content="Sign in" /></NavLink>
                 },
                 {
                     key: 3,
                     text: "SignUp",
                     value: 3,
-                    content: <NavLink to="/signup"><Header icon="signup" content="SignUp" /></NavLink>
+                    content: <NavLink to="/signup"><Header icon="signup" content="Sign up" /></NavLink>
                 }
             ];
         }

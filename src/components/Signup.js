@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Image, Header, Grid, Form } from 'semantic-ui-react';
+import { Image, Header, Grid, Form, Icon } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { signupAsync, signup } from '../actions/user';
 
 import waitlist from '../images/waitlist.png';
 import card from '../images/card.png';
+import SocialIconGroup from './SocialIconGroup';
 
 class Signup extends Component {
     state = {
@@ -52,9 +53,26 @@ class Signup extends Component {
                 <Header as="h4" className="block-centered">Or Join With</Header>
                 </Grid.Row>
                 <Grid.Row>
-                    <Grid.Column mobile={16} tablet={8} computer={7}><Image src={waitlist} width="60%" style={{float: "right"}} /></Grid.Column>
+                    <SocialIconGroup />
+                </Grid.Row>
+                <Grid.Row>
+                    <Grid.Column mobile={16} tablet={8} computer={7}>
+                    <Header as="h3" className="d-block text-center block-centered" icon>
+                        <Icon name="wait" />
+                        Join the waitlist
+                        <Header.Subheader>Sign up using the above form to reserve your spot<br/> when we launch (Limited Spots)</Header.Subheader>
+                    </Header>
+                        <Image src={waitlist} width="45%" className="block-centered" />
+                    </Grid.Column>
                     <Grid.Column computer={2}></Grid.Column>
-                    <Grid.Column mobile={16} tablet={8} computer={7}><Image src={card} width="60%" /></Grid.Column>
+                    <Grid.Column mobile={16} tablet={8} computer={7}>
+                        <Header as="h3" className="d-block block-centered text-center" icon>
+                        <Icon name="credit card" />
+                        Get Your Free Card
+                        <Header.Subheader>Invite 2 or more friends to get a FREE CARD and <br/> preferential access to Infino. (Very Limited Spots)</Header.Subheader>
+                        </Header>
+                        <Image src={card} width="45%" className="block-centered"/>
+                    </Grid.Column>
                 </Grid.Row>
             </Grid>
             </div>

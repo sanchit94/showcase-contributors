@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Form, Button, Icon, Message, Header } from 'semantic-ui-react';
+import { Card, Form, Button, Message, Header, Segment } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -37,8 +37,9 @@ class LoginForm extends Component {
 		});
 	}
 
-	renderLogin = () => {
+	render() {
 		return (
+			<div>
 			<Card className="raised card-norad mb-2 login" fluid>
 				<Card.Header className="header-grey">
 					<div className="header-text">Welcome back</div>
@@ -51,11 +52,10 @@ class LoginForm extends Component {
 						<input name="email" onChange={this.onChange} placeholder="email address" />
 					</Form.Field>
 					<Button onClick={this.onSubmit} className="card-body-button">
-					LOGIN
+					SIGN IN
 					</Button>
 					<Message
 					error
-					header='Email not registered'
 					>You have entered an incorrect email address. Please enter correct email address or <Link to="/signup">SignUp</Link>
 					</Message>
 					<Header as="h4">Or Join With</Header>
@@ -63,22 +63,10 @@ class LoginForm extends Component {
 				</Form>
 				</Card.Content>
 			</Card>
-		);
-	}
-
-	render() {
-		return (
-			<div className="app-over">
-				<header className="app-bar mt-8">
-				<div className="d-flex">
-				</div>
-				</header>
-				<div className="board">
-						<div className="auto-height d-flex">
-								{this.renderLogin()}
-						</div>
-				</div>
-			</div>			
+			<Segment className="raised">
+				New to Infino? <Link to="/signup"> Sign Up!</Link>
+			</Segment>
+			</div>
 		);
 	}
 }

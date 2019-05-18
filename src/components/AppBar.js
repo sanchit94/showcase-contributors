@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
 import { logout } from '../actions/user';
 
-import { Image, Button, Header } from 'semantic-ui-react';
+import { Image, Button } from 'semantic-ui-react';
 import logo from '../images/logo.png';
+import LoginButton from './SignInModalButton';
+import SignUpButton from './SignUpModalButton';
 
 const style = {
     image: {
@@ -38,9 +40,10 @@ function AppBar(props) {
         <div className="app-header">
             <Link to="/"><Image src={logo} style={style.image}/></Link>
             <h2 className="visible-md" style={style.centerText}>Infino Contributors</h2>
+            
             {props.isLoggedIn && <Button as={NavLink} to="/logout" onClick={() => props.logout()} className="greenish">Sign out</Button>}
-            {!props.isLoggedIn && <Button as={NavLink} to="/login" className="tertiary mr-2">Sign in</Button>}
-            {!props.isLoggedIn && <Button as={NavLink} to="/signup" className="greenish">Get A Free Card</Button>}         
+            {!props.isLoggedIn && <LoginButton />}
+            {!props.isLoggedIn && <SignUpButton />}
         </div>
     );
 

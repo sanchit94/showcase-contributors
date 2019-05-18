@@ -15,7 +15,7 @@ import { Icon } from 'semantic-ui-react';
 
 export default function() {
     return(
-        <div className="block-centered">
+        <div className="block-centered text-center">
             <Icon circular inverted size="large" name="facebook f" />
             <Icon circular inverted size="large" name="twitter" />
             <Icon circular inverted size="large" name="google" />

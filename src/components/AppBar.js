@@ -27,19 +27,19 @@ const style = {
 function AppBar(props) {
 
     
-    const getName = () => {
-        if(localStorage.getItem('username')) {
-            return `Hello, ${localStorage.getItem('username')}`
-        }
-        return "Hello, Contributor"
-    }
+    // const getName = () => {
+    //     if(localStorage.getItem('username')) {
+    //         return `Hello, ${localStorage.getItem('username')}`
+    //     }
+    //     return "Hello, Contributor"
+    // }
 
     return(
         <div className="app-header">
             <Link to="/"><Image src={logo} style={style.image}/></Link>
             <h2 className="visible-md" style={style.centerText}>Infino Contributors</h2>
             {props.isLoggedIn && <Button as={NavLink} to="/logout" onClick={() => props.logout()} className="greenish">Sign out</Button>}
-            {!props.isLoggedIn && <Button as={NavLink} to="/login" className="tertiary">Sign in</Button>}
+            {!props.isLoggedIn && <Button as={NavLink} to="/login" className="tertiary mr-2">Sign in</Button>}
             {!props.isLoggedIn && <Button as={NavLink} to="/signup" className="greenish">Get A Free Card</Button>}         
         </div>
     );

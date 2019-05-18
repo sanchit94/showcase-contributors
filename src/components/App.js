@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import 'rodal/lib/rodal.css';
 
 import Content from './Content';
 import AppBar from './AppBar';

@@ -59,21 +59,25 @@ class SignUpModal extends Component {
         return(
             <div>
             <Button onClick={this.showModal} className="greenish">Sign up</Button>
-            <Rodal height="720" width="900" closeOnEsc={true} animation="slideUp" visible={this.state.isOpen} onClose={this.CloseModal}>
-
+            <Rodal className="signup-modal" width="100%" height="100%" closeOnEsc={true} animation="slideUp" visible={this.state.isOpen} onClose={this.CloseModal}>
             <Grid>
                 <Grid.Row className="mt-12">
+                <Grid.Column>
                     <Header as="h1" className="block-centered text-center w-80">You are about to Get Upgraded to Infino</Header>
+                </Grid.Column>
                 </Grid.Row>
                 <Grid.Row>
+
                     <Header as="h4" className="block-centered">Fill out the form and follow the steps</Header>
                 </Grid.Row>
                 <Grid.Row>
                 <Form loading={this.props.reqSent} className="block-centered w-80" onSubmit={this.handleSubmit} error={this.state.error}>
                     <Form.Group className="d-flex justify-center">
-                    <Form.Input placeholder='Name' name='name' onChange={this.handleChange} />
-                    <Form.Input placeholder='Email' name='email' onChange={this.handleChange} />
-                    <Form.Button className="greenish" content='Get Your Free Card' />
+                    <Form.Field><Form.Input placeholder='Name' name='name' onChange={this.handleChange} /></Form.Field>
+                    
+                    <Form.Field><Form.Input placeholder='Email' name='email' onChange={this.handleChange} /></Form.Field>
+                    <Form.Field>
+                    <Form.Button className="greenish" content='Get Your Free Card' /></Form.Field>
                     </Form.Group>
                     <Message
                     error
@@ -88,22 +92,22 @@ class SignUpModal extends Component {
                     <SocialIconGroup />
                 </Grid.Row>
                 <Grid.Row>
-                    <Grid.Column mobile={16} tablet={8} computer={7}>
+                    <Grid.Column mobile={16} tablet={7} computer={7}>
                     <Header as="h3" className="d-block text-center block-centered" icon>
                         <Icon name="wait" />
                         Join the waitlist
                         <Header.Subheader>Sign up using the above form to reserve your spot<br/> when we launch (Limited Spots)</Header.Subheader>
                     </Header>
-                        <Image src={waitlist} width="45%" className="block-centered" />
+                        <Image src={waitlist} width="50%" className="block-centered" />
                     </Grid.Column>
                     <Grid.Column computer={2}></Grid.Column>
-                    <Grid.Column mobile={16} tablet={8} computer={7}>
+                    <Grid.Column mobile={16} tablet={7} computer={7}>
                         <Header as="h3" className="d-block block-centered text-center" icon>
                         <Icon name="credit card" />
                         Get Your Free Card
                         <Header.Subheader>Invite 2 or more friends to get a FREE CARD and <br/> preferential access to Infino. (Very Limited Spots)</Header.Subheader>
                         </Header>
-                        <Image src={card} width="45%" className="block-centered"/>
+                        <Image src={card} width="50%" className="block-centered"/>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>

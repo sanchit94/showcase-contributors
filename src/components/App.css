@@ -306,7 +306,15 @@ i.inverted.circular.icon.google.large {
 
 /* Sign Up Page Styling */
 
-.ui.form > .fields.d-flex.justify-center input {
-    margin-bottom: 1em;
+.signup-modal {
+    overflow-x: scroll;
+}
+
+.rodal-dialog {
+    overflow: inherit;
+}
+
+.ui.form .fields .field {
+    margin-bottom: 0.5em;
 }
 

@@ -63,8 +63,8 @@ class SignInButton extends Component {
         return(
             <div>
                 <Button onClick={this.toggleModal} className="tertiary mr-2">Login</Button>
-                <Rodal closeOnEsc={true} height={this.setHeight()} animation="slideUp" visible={this.state.isOpen} onClose={this.CloseModal}>
-                    <div>
+                <Rodal closeOnEsc={true} width="300" height={this.setHeight()} animation="slideUp" visible={this.state.isOpen} onClose={this.CloseModal}>
+                    
                         <div className="header-text">Welcome back</div>
                         <span role="img" aria-label="Namaste" className="font-lg">🙏</span>
                         <Form loading={this.props.reqSent} error={this.state.error}>
@@ -82,7 +82,6 @@ class SignInButton extends Component {
                             <Header as="h4" className="text-center">Or Join With</Header>
                             <SocailIconGroup />
                         </Form>
-                    </div>
                 </Rodal>
             </div>
         );

@@ -2,7 +2,7 @@ import Axios from "axios";
 import { userDomain } from '../constants';
 import * as actionTypes from './types';
 
-const reqSend = () => {
+export const reqSend = () => {
     return {
         type: actionTypes.SENT_REQ
     };

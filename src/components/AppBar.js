@@ -5,6 +5,7 @@ import { logout } from '../actions/user';
 
 import { Image, Button } from 'semantic-ui-react';
 import logo from '../images/logo.png';
+import SuggestButton from './SuggestFeatButton';
 import LoginButton from './SignInModalButton';
 import SignUpButton from './SignUpModalButton';
 
@@ -40,7 +41,7 @@ function AppBar(props) {
         <div className="app-header">
             <Link to="/"><Image src={logo} style={style.image}/></Link>
             <h2 className="visible-md" style={style.centerText}>Infino Contributors</h2>
-            
+            {props.isLoggedIn && <SuggestButton />}
             {props.isLoggedIn && <Button as={NavLink} to="/logout" onClick={() => props.logout()} className="greenish">Sign out</Button>}
             {!props.isLoggedIn && <LoginButton />}
             {!props.isLoggedIn && <SignUpButton />}

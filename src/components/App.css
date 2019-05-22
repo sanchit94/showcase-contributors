@@ -145,6 +145,14 @@ body {
     flex-direction: row;
 }
 
+.align-center {
+    align-items: center;
+}
+
+.vh-height {
+    height: 100vh;
+}
+
 .justify-center {
     justify-content: center;
 }

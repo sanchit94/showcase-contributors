@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { loadInitialState } from '../actions';
 import { loginAsync, login, logout } from '../actions/user';
 
+import { Dimmer, Loader } from 'semantic-ui-react';
+
 import List from './List';
 
 
@@ -49,7 +51,17 @@ class Board extends Component {
     }
 
     render() {
+        if (this.props.loading) {
+            return (
+                <div className="d-flex align-center block-centered vh-height">
+                    <Dimmer active inverted>
+                        <Loader inverted>Loading</Loader>
+                    </Dimmer>
+                </div>
+            );
+        }
         return(
+            
             <div className="app-over content">
                 <header className="app-bar mt-4">
                 <div className="d-flex">

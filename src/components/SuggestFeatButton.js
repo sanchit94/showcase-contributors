@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { suggest } from '../actions/suggestion';
+import { reqFailed } from '../actions/user';
 
 import { Button, Form } from 'semantic-ui-react';
 
@@ -29,6 +32,20 @@ class SuggestionButton extends Component {
         });
     }
 
+    onSubmit = e => {
+        e.preventDefault();
+        this.props.suggest(this.state.suggestedText)
+        .then(res => {
+            alert("Thanks for the suggestion");
+        })
+        .catch(err => {
+            this.props.reqFailed();
+            alert("Something's wrong!");
+        })
+
+
+    }
+
     render() {
         return(
             <div>
@@ -51,4 +68,8 @@ class SuggestionButton extends Component {
     }
 }
 
-export default SuggestionButton;
+const mapStateToProps = store => ({
+    reqSent: store.reqSent
+})
+
+export default connect(mapStateToProps, { suggest, reqFailed })(SuggestionButton);

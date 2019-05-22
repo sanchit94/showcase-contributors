@@ -44,6 +44,7 @@ class SignInButton extends Component {
             this.setState({
                 isOpen: false
             });
+            
 		})
 		.catch(err => {
 			this.props.reqFailed();
@@ -63,7 +64,7 @@ class SignInButton extends Component {
         return(
             <div>
                 <Button onClick={this.toggleModal} className="tertiary mr-2">Login</Button>
-                <Rodal closeOnEsc={true} width="300" height={this.setHeight()} animation="slideUp" visible={this.state.isOpen} onClose={this.CloseModal}>
+                <Rodal closeOnEsc={true} width={300} height={this.setHeight()} animation="slideUp" visible={this.state.isOpen} onClose={this.CloseModal}>
                     
                         <div className="header-text">Welcome back</div>
                         <span role="img" aria-label="Namaste" className="font-lg">🙏</span>

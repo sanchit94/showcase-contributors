@@ -10,7 +10,9 @@ export const suggest = content => {
             method: "POST",
             url: `${domain}/suggest`,
             data: {
-                content
+                usermail: localStorage.getItem('user'),
+                name: localStorage.getItem('username'),
+                suggestion: content
             }
         });
     }

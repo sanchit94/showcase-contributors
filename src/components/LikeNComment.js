@@ -13,7 +13,7 @@ function LikeNComment(props) {
   const [voted, setVoted] = useState((props.isLoggedIn && props.user && props.user.votes && props.user.votes.includes(props.cardId)) || false);
   const [isOpened, setOpened] = useState(false);
   const { transform, right } = useSpring({
-    transform: voted ? `scale(1, 1)` : `scale(0, 0)`,
+    transform: voted ? `scale(1.2, 1.2)` : `scale(0, 0)`,
     right: voted ? `0em` : `0.1em`,
     from: {
       transform: 'scale(0, 0)'
@@ -51,24 +51,10 @@ function LikeNComment(props) {
 
 	return(
 		<div>
-      <Icon className="pointer-cursor" size="large" name="heart outline" color="red" onClick={vote} />
-      <span style={{verticalAlign: "bottom"}}>{props.cards[props.index] && props.cards[props.index].votes}</span>
-      <animated.div className="pointer-cursor" style={{transform, right, marginTop: '-1.55em', position: "relative", width: "fit-content"}}><Icon onClick={vote} size="large" color="red" name="heart" /></animated.div>
-      
+      <Icon className="pointer-cursor" size="large" name="heart outline" color="grey" onClick={vote} />
+      <span style={{verticalAlign: "bottom", marginLeft: "0.2em"}}>{props.cards[props.index] && props.cards[props.index].votes}</span>
+      <animated.div className="pointer-cursor" style={{transform, right, marginTop: "-1.55em", position: "relative", width: "fit-content"}}><Icon onClick={vote} size="large" color="red" name="heart" /></animated.div>
       <ModalTopAligned open={isOpened} closeModal={closeModal} />
-      
-      {/* <Label as='a' basic pointing='left'>
-        {props.cards[props.index] && props.cards[props.index].votes}
-      </Label> */}
-			{/* <Button as='div' labelPosition='right'>
-      <Button icon color={getColor()} onClick={vote}>
-        <Icon name='heart' />
-        <ModalTopAligned open={isOpened} closeModal={closeModal} />
-      </Button>
-      <Label as='a' basic pointing='left'>
-        {props.cards[props.index] && props.cards[props.index].votes}
-      </Label>
-    </Button> */}
 		</div>
 	);
 }

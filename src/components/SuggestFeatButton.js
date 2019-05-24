@@ -11,6 +11,7 @@ class SuggestionButton extends Component {
 
     state = {
         isOpen: false,
+        showConfirmation: false,
         suggestedText: ''
     }
 
@@ -26,42 +27,58 @@ class SuggestionButton extends Component {
         })
     }
 
+    showConfirmDialog = () => {
+        this.setState({
+            showConfirmation: true
+        });
+        setTimeout(() => {
+            this.setState({
+                showConfirmation: false
+            })
+        }, 1500);
+    }
+
     suggestionTyping = e => {
         this.setState({
             suggestedText: e.target.value
         });
+        
     }
 
     onSubmit = e => {
         e.preventDefault();
         this.props.suggest(this.state.suggestedText)
         .then(res => {
-            alert("Thanks for the suggestion");
+            this.CloseModal();
+            this.showConfirmDialog();
         })
         .catch(err => {
             this.props.reqFailed();
             alert("Something's wrong!");
         })
-
-
     }
 
     render() {
         return(
             <div>
                 <Button onClick={this.toggleModal} className="tertiary mr-2">Suggestions</Button>
-                <Rodal closeOnEsc={true} width="300" height="500" animation="slideUp" visible={this.state.isOpen} onClose={this.CloseModal}>
-                    
-                        <div className="header-text">Welcome</div>
-                        <span role="img" aria-label="Namaste" className="font-lg">🙏</span>
-                        <Form loading={this.props.reqSent} error={this.state.error}>
-                            <Form.Field>
-                            <Form.TextArea label='Suggest us!' placeholder='Suggest us a feature or an impovement...' />
-                            </Form.Field>
-                            <Button onClick={this.onSubmit} className="card-body-button">
+                <Rodal closeOnEsc={true} width="300" height="400" animation="slideUp" visible={this.state.isOpen} onClose={this.CloseModal}>
+                    <div className="header-text">Welcome</div>
+                    <span role="img" aria-label="Namaste" className="font-lg">🙏</span>
+                    <Form onSubmit={this.onSubmit} loading={this.props.reqSent} error={this.state.error}>
+                        <Form.Field>
+                        <Form.TextArea onChange={this.suggestionTyping} label='Suggest us!' placeholder='Suggest us a feature or an impovement...' />
+                        </Form.Field>
+                        <Button className="card-body-button">
                             SUBMIT
-                            </Button>
-                        </Form>
+                        </Button>
+                    </Form>
+                </Rodal>
+                <Rodal width="200" height="200" animation="fade" visible={this.state.showConfirmation}>
+                    <div className="font-lg">
+                        <span role="img" aria-label="Thumbs-up">👍</span>
+                        Submitted
+                    </div>
                 </Rodal>
             </div>
         );

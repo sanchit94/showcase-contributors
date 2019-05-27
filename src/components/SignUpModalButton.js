@@ -58,7 +58,7 @@ class SignUpModal extends Component {
     render() {
         return(
             <div>
-            <Button onClick={this.showModal} className="greenish">Sign up<Icon className="ml-1" name="rocket" /></Button>
+            <Button onClick={this.showModal} className="greenish">GET YOUR FREE CARD<Icon className="ml-1" name="rocket" /></Button>
             <Rodal className="signup-modal" width={"inherit"} height={"inherit"} closeOnEsc={true} animation="slideUp" visible={this.state.isOpen} onClose={this.CloseModal}>
             <Grid>
                 <Grid.Row className="mt-12">
@@ -91,7 +91,7 @@ class SignUpModal extends Component {
                 <Grid.Row>
                     <Grid.Column mobile={16} tablet={7} computer={7}>
                     <Header as="h3" className="d-block text-center block-centered" icon>
-                        <Icon name="wait" />
+                        <Icon circular name="">1</Icon>
                         Join the waitlist
                         <Header.Subheader>Sign up using the above form to reserve your spot<br/> when we launch (Limited Spots)</Header.Subheader>
                     </Header>
@@ -100,7 +100,7 @@ class SignUpModal extends Component {
                     <Grid.Column computer={2}></Grid.Column>
                     <Grid.Column mobile={16} tablet={7} computer={7}>
                         <Header as="h3" className="d-block block-centered text-center" icon>
-                        <Icon name="credit card" />
+                        <Icon circular name="">2</Icon>
                         Get Your Free Card
                         <Header.Subheader>Invite 2 or more friends to get a FREE CARD and <br/> preferential access to Infino. (Very Limited Spots)</Header.Subheader>
                         </Header>

@@ -289,7 +289,6 @@ body {
     margin-bottom: 0.5em;
     text-align: center;
     font-size: 12pt;
-    color: #8E9BAE;
 }
 
 .card-body-button {
@@ -344,3 +343,7 @@ div.fields.d-flex.justify-center > div > div > div > input[type=text]::placehold
     font-weight: 600;
 }
 
+.ui.icon.header .circular.icon {
+    font-size: 1.35em;
+    font-family: 'Source Sans Pro';
+}

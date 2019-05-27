@@ -1,0 +1,4 @@
+@fontName          : 'Source Sans Pro';
+@googleFontName    : 'Source+Sans+Pro';
+@googleFontSizes   : '400,700,400italic,700italic';
+@googleFontRequest : '@{googleFontName}:@{googleFontSizes}';

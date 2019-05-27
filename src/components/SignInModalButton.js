@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Rodal from 'rodal';
 import {connect} from 'react-redux';
-import { Button, Form, Header, Message } from 'semantic-ui-react';
+import { Button, Icon, Form, Header, Message } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { loginAsync, login, reqFailed } from '../actions/user';
 
@@ -63,7 +63,7 @@ class SignInButton extends Component {
     render() {
         return(
             <div>
-                <Button onClick={this.toggleModal} className="tertiary mr-2">Login</Button>
+                <Button onClick={this.toggleModal} className="tertiary mr-2">LOG IN<Icon className="ml-1" name="sign in" /></Button>
                 <Rodal closeOnEsc={true} width={300} height={this.setHeight()} animation="slideUp" visible={this.state.isOpen} onClose={this.CloseModal}>
                     
                         <div className="header-text">Welcome back</div>

@@ -58,7 +58,7 @@ class SignUpModal extends Component {
     render() {
         return(
             <div>
-            <Button onClick={this.showModal} className="greenish">Sign up</Button>
+            <Button onClick={this.showModal} className="greenish">Sign up<Icon className="ml-1" name="rocket" /></Button>
             <Rodal className="signup-modal" width={"inherit"} height={"inherit"} closeOnEsc={true} animation="slideUp" visible={this.state.isOpen} onClose={this.CloseModal}>
             <Grid>
                 <Grid.Row className="mt-12">

@@ -1,0 +1,6 @@
+
+
+    @inputColor : #212529;
+    @inputBackground : #edeff2;
+    @inputBorder : 0 solid #ced4da;
+    @inputFontWeight : 600pt; 

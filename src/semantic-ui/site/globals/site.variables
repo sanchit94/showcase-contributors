@@ -2,3 +2,4 @@
 @googleFontName    : 'Source+Sans+Pro';
 @googleFontSizes   : '400,700,400italic,700italic';
 @googleFontRequest : '@{googleFontName}:@{googleFontSizes}';
+@textColor         : #414c5a;

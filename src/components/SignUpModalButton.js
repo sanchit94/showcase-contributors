@@ -63,21 +63,18 @@ class SignUpModal extends Component {
             <Grid>
                 <Grid.Row className="mt-12">
                 <Grid.Column>
-                    <Header as="h1" className="block-centered text-center w-80">You are about to Get Upgraded to Infino</Header>
+                    <Header as="h1" className="block-centered text-center font-size-30">You're About To Get Upgraded To Infino<span role="img" aria-label="Hooray!">🙌</span></Header>
                 </Grid.Column>
                 </Grid.Row>
                 <Grid.Row>
-
-                    <Header as="h4" className="block-centered">Fill out the form and follow the steps</Header>
+                    <Header as="h3" className="block-centered">Fill out the form and follow the steps</Header>
                 </Grid.Row>
                 <Grid.Row>
-                <Form loading={this.props.reqSent} className="block-centered w-80" onSubmit={this.handleSubmit} error={this.state.error}>
+                <Form loading={this.props.reqSent} className="block-centered" onSubmit={this.handleSubmit} error={this.state.error}>
                     <Form.Group className="d-flex justify-center">
-                    <Form.Field><Form.Input placeholder='Name' name='name' onChange={this.handleChange} /></Form.Field>
-                    
-                    <Form.Field><Form.Input placeholder='Email' name='email' onChange={this.handleChange} /></Form.Field>
-                    <Form.Field>
-                    <Form.Button className="greenish" content='Get Your Free Card' /></Form.Field>
+                        <Form.Field><Form.Input placeholder='Name' name='name' onChange={this.handleChange} /></Form.Field>
+                        <Form.Field><Form.Input placeholder='Email' name='email' onChange={this.handleChange} /></Form.Field>
+                        <Form.Field><Form.Button className="greenish" content='GET YOUR FREE CARD' /></Form.Field>
                     </Form.Group>
                     <Message
                     error

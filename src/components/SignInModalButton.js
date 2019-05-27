@@ -54,7 +54,7 @@ class SignInButton extends Component {
 		})
 	}
 
-	onChange = e => {
+	handleChange = e => {
 		this.setState({
 			[e.target.name]: e.target.value
 		});
@@ -68,14 +68,16 @@ class SignInButton extends Component {
                     
                         <div className="header-text">Welcome back</div>
                         <span role="img" aria-label="Namaste" className="font-lg">🙏</span>
-                        <Form loading={this.props.reqSent} error={this.state.error}>
+                        <Form onSubmit={this.onSubmit} loading={this.props.reqSent} error={this.state.error}>
                             <Form.Field>
                                 <label><div className="card-body-text">Sign in with your email</div></label>
-                                <input name="email" onChange={this.onChange} placeholder="email address" />
+                                <Form.Group className="d-flex justify-center">
+                                    <Form.Field><Form.Input placeholder='Email' name='email' onChange={this.handleChange} /></Form.Field>
+                                </Form.Group>
+                                <Form.Group className="d-flex justify-center">
+                                    <Form.Field><Form.Button className="greenish" content='LOGIN' /></Form.Field>
+                                </Form.Group>
                             </Form.Field>
-                            <Button onClick={this.onSubmit} className="card-body-button">
-                            SIGN IN
-                            </Button>
                             <Message
                             error
                             >You have entered an incorrect email address. Please enter correct email address or <Link onClick={this.CloseModal} to="/signup">SignUp</Link>

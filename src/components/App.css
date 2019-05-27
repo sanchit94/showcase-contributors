@@ -7,7 +7,7 @@ body {
 .App {
     height: 100vh;
     overflow-x: auto;
-    color: #222;;
+    color: #414c5a;
 }
 
 /* Generic styles start */
@@ -327,7 +327,20 @@ i.inverted.circular.icon.google.large {
     overflow: inherit;
 }
 
+.font-size-30 {
+    font-size: 30pt!important;
+}
+
 .ui.form .fields .field {
     margin-bottom: 0.5em;
+}
+
+div.fields.d-flex.justify-center > div > div > div > input[type=text] {
+    font-weight: 600;
+}
+
+div.fields.d-flex.justify-center > div > div > div > input[type=text]::placeholder {
+    color: #708198;
+    font-weight: 600;
 }
 

@@ -6,8 +6,8 @@ import { logout } from '../actions/user';
 import { Image, Button } from 'semantic-ui-react';
 import logo from '../images/logo.png';
 import SuggestButton from './SuggestFeatButton';
-import LoginButton from './SignInModalButton';
-import SignUpButton from './SignUpModalButton';
+import LoginButton from './SignIn/SignInModalButton';
+import SignUpButton from './SignUp/SignUpModalButton';
 
 const style = {
     image: {

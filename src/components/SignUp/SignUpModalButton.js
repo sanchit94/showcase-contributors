@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Rodal from 'rodal';
 
-import waitlist from '../images/waitlist.png';
-import card from '../images/card.png';
+import waitlist from '../../images/waitlist.png';
+import card from '../../images/card.png';
 
 import { connect } from 'react-redux';
-import { signupAsync, signup, reqFailed } from '../actions/user';
+import { signupAsync, signup, reqFailed } from '../../actions/user';
 import { Image, Header, Grid, Form, Icon, Button, Message } from 'semantic-ui-react';
-import SocialIconGroup from './SocialIconGroup';
+import SocialIconGroup from '../SocialIconGroup';
 
 class SignUpModal extends Component {
     

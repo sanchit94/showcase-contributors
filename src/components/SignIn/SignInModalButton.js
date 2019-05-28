@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Rodal from 'rodal';
 import { Button, Icon, Form, Header, Message } from 'semantic-ui-react';
 
+import SignInForm from './SignInForm';
+
 
 
 
@@ -39,6 +41,7 @@ class SignInButton extends Component {
                     
                         <div className="header-text">Welcome back</div>
                         <span role="img" aria-label="Namaste" className="font-lg">🙏</span>
+                        <SignInForm />
                         
                 </Rodal>
             </div>

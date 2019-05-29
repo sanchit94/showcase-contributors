@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { loadInitialState } from '../actions';
 import { loginAsync, login, logout } from '../actions/user';
 
 import { Dimmer, Loader } from 'semantic-ui-react';
@@ -8,13 +9,23 @@ import List from './List';
 
 
 class Board extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: null
+       
+    componentWillMount = () => {
+        if (localStorage.getItem('user')) {
+            this.props.loginAsync(localStorage.getItem('user'))
+            .then(res => {
+              this.props.loadInitialState();
+              this.props.login(res.data);
+            })
+            .catch(() => {
+                console.log("Caught an error")
+                this.props.logout();
+            })
+        } else {
+            this.props.loadInitialState();
         }
     }
-    
+        
 
     renderHeading = () => {
         return this.props.boards[1].listIds.map(listId => {
@@ -38,8 +49,9 @@ class Board extends Component {
         if (this.props.loading) {
             return (
                 <div className="d-flex align-center block-centered vh-height">
-                    <Dimmer active inverted>
-                        <Loader inverted>Loading</Loader>
+                    <Dimmer inverted>
+                    {/* active */}
+                        <Loader inverted></Loader>
                     </Dimmer>
                 </div>
             );
@@ -69,4 +81,4 @@ const mapStateToProps = store => ({
     loading: store.loading
 })
 
-export default connect(mapStateToProps, { loginAsync, login, logout })(Board); 
+export default connect(mapStateToProps, { loginAsync, login, logout, loadInitialState })(Board); 

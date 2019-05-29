@@ -35,7 +35,6 @@ class SignUpForm extends Component {
 
 
     validateInput = e => {
-        console.log(e.target.name);
         if (!e.target.value) {
             this.setState({
                 [e.target.name]: {
@@ -67,7 +66,6 @@ class SignUpForm extends Component {
             return;
         }
         if(!this.state.name.value) {
-            console.log("Heyuuu");
             this.setState({
                 name: {
                     isValid: false

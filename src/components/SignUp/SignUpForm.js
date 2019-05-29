@@ -13,49 +13,41 @@ const errorMessage = {
 class SignUpForm extends Component {
 
     state = {
-        name: '',
-        email: '',
-        validation: {
-            name: true,
-            email: true
+        name: {
+            value: '',
+            isValid: true
+        },
+        email: {
+            value: '',
+            isValid: true
         },
         networkError: false
     };
 
     handleChange = e => {
         this.setState({
-            [e.target.name]: e.target.value,
-            validation: {
-                [e.target.name]: true
+            [e.target.name]: {
+                value: e.target.value,
+                isValid: true
             }
         });
     };
 
-    validateName = e => {
-        console.log("Name validation done")
-        console.log(this.state.validation);
-        if(!e.target.value) {
-            this.setState({
-                validation: {
-                    name: false
-                }
-            });
-        }
-    }
 
-    validateEmail = e => {
-        console.log("EMail validation done");
-        console.log(this.state.validation);
+    validateInput = e => {
+        console.log(e.target.name);
         if (!e.target.value) {
             this.setState({
-                validation: {
-                    email: false
+                [e.target.name]: {
+                    value: '',
+                    isValid: false
                 }
             });
-        } else if(!expression.test(String(e.target.value).toLowerCase())) {
+        } else if(e.target.name === "email" && !expression.test(String(e.target.value).toLowerCase())) {
             this.setState({
-                validation: {
-                    email: false
+                email: {
+                    value: e.target.value,
+                    isValid: false
                 }
             });
         }
@@ -63,9 +55,38 @@ class SignUpForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        if(!this.state.validation.name || !this.state.validation.email) {
+        if(!this.state.name.value && !this.state.email.value) {
+            this.setState({
+                name: {
+                    isValid: false
+                },
+                email: {
+                    isValid: false
+                }
+            });
             return;
         }
+        if(!this.state.name.value) {
+            console.log("Heyuuu");
+            this.setState({
+                name: {
+                    isValid: false
+                }
+            });
+            return;
+        }
+        if(!this.state.email.value) {
+            this.setState({
+                email: {
+                    isValid: false
+                }
+            });
+            return;
+        }
+        if(!this.state.name.isValid || !this.state.email.isValid) {
+            return;
+        }
+
         this.props.signupAsync(this.state)
         .then(res => {
             this.props.signup(this.state);
@@ -79,8 +100,7 @@ class SignUpForm extends Component {
             this.setState({
                 error: true
             })
-        })
-
+        });
     }
 
     render() {
@@ -90,11 +110,11 @@ class SignUpForm extends Component {
                     <Form.Field>
                         <Form.Input 
                         placeholder='Name' 
-                        onBlur={this.validateName}
+                        onBlur={this.validateInput}
                         name='name' 
                         onChange={this.handleChange}
                         />
-                        {!this.state.validation.name &&
+                        {!this.state.name.isValid &&
                         <Message
                         warning
                         header="This field cannot be blank!"
@@ -103,14 +123,14 @@ class SignUpForm extends Component {
                     <Form.Field>
                         <Form.Input 
                         placeholder='Email'
-                        onBlur={this.validateEmail} 
+                        onBlur={this.validateInput} 
                         name='email' 
                         onChange={this.handleChange}
                         />
-                        {!this.state.validation.email &&
+                        {!this.state.email.isValid &&
                         <Message
                         warning
-                        header={this.state.email ? "True" : "False"}
+                        header={this.state.email.value ? errorMessage.filled : errorMessage.blank}
                         />}
                         </Form.Field>
                     <Form.Field><Form.Button className="greenish" content='GET YOUR FREE CARD' /></Form.Field>

@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Rodal from 'rodal';
-import { Button, Icon, Form, Header, Message } from 'semantic-ui-react';
+import { Button, Icon } from 'semantic-ui-react';
 
 import SignInForm from './SignInForm';
 
@@ -8,20 +8,15 @@ import SignInForm from './SignInForm';
 
 
 
-class SignInButton extends Component {
-    state = {
-        isOpen: false,
-    }
-    toggleModal = () => {
-        this.setState({
-            isOpen: true
-        })
+function SignInButton() {
+    const [isOpen, setOpen] = useState(false);
+
+    const showModal = () => {
+        setOpen(true)
     }
 
-    CloseModal = () => {
-        this.setState({
-            isOpen: false
-        })
+    const closeModal = () => {
+        setOpen(false)
     }
 
     // setHeight = () => {
@@ -33,21 +28,19 @@ class SignInButton extends Component {
 
     
     
-    render() {
-        return(
-            <div>
-                <Button onClick={this.toggleModal} className="tertiary mr-2">LOG IN<Icon className="ml-1" name="sign in" /></Button>
-                <Rodal closeOnEsc={true} width={300} height={500} animation="slideUp" visible={this.state.isOpen} onClose={this.CloseModal}>
+    return(
+        <div>
+            <Button onClick={showModal} className="tertiary mr-2">LOG IN<Icon className="ml-1" name="sign in" /></Button>
+            <Rodal closeOnEsc={true} width={300} height={500} animation="slideUp" visible={isOpen} onClose={closeModal}>
+                
+                    <div className="header-text">Welcome back</div>
+                    <span role="img" aria-label="Namaste" className="font-lg">🙏</span>
+                    <SignInForm />
                     
-                        <div className="header-text">Welcome back</div>
-                        <span role="img" aria-label="Namaste" className="font-lg">🙏</span>
-                        <SignInForm />
-                        
-                </Rodal>
-            </div>
-        );
+            </Rodal>
+        </div>
+    );
 
-    }
     
 }
 

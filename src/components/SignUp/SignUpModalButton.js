@@ -17,8 +17,9 @@ function SignUpModal() {
     }
 
     const closeModal = () => {
-        setOpen(!isOpen)
+        setOpen(false)
     }
+    
     return(
         <div>
             <Button onClick={showModal} className="greenish">GET YOUR FREE CARD<Icon className="ml-1" name="rocket" /></Button>

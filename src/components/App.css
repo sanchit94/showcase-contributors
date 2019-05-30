@@ -334,14 +334,15 @@ i.inverted.circular.icon.google.large {
     margin-bottom: 0.5em;
 }
 
-div.fields.d-flex.justify-center > div > div > div > input[type=text] {
+div.fields.d-flex.justify-center > div > div div > input[type=text] {
     font-weight: 600;
 }
 
-div.fields.d-flex.justify-center > div > div > div > input[type=text]::placeholder {
+div.fields.d-flex.justify-center > div > div div > input[type=text]::placeholder {
     color: #708198;
     font-weight: 600;
 }
+
 
 .ui.icon.header .circular.icon {
     font-size: 1.35em;

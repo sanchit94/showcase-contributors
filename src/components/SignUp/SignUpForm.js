@@ -96,6 +96,10 @@ class SignUpForm extends Component {
                 },
                 email: {
                     isInvalid: true
+                },
+                wobble: {
+                    email: true,
+                    name: true
                 }
             });
             return;
@@ -104,6 +108,9 @@ class SignUpForm extends Component {
             this.setState({
                 name: {
                     isInvalid: true
+                },
+                wobble: {
+                    name: true
                 }
             });
             return;
@@ -112,6 +119,9 @@ class SignUpForm extends Component {
             this.setState({
                 email: {
                     isInvalid: true
+                },
+                wobble: {
+                    email: true
                 }
             });
             return;
@@ -142,6 +152,7 @@ class SignUpForm extends Component {
                 <Form.Group className="d-flex justify-center">
                 <Spring reset native from={{ x: 0 }} to={{x: this.state.wobble.name && !this.state.name.value ? 1 : 0}} config={{duration: 1000}}>
                     {({x}) => <animated.div
+                            className="mr-2"
                             style={{transform: x
                                 .interpolate({
                                   range: [0, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 1],
@@ -166,6 +177,7 @@ class SignUpForm extends Component {
                     </Spring>
                     <Spring reset native from={{ y: 0 }} to={{y: this.state.wobble.email ? 1 : 0}} config={{duration: 1000}}>
                     {({y}) => <animated.div
+                            className="mr-2"
                             style={{transform: y
                                 .interpolate({
                                   range: [0, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 1],

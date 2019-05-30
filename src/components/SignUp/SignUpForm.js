@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Form, Message } from 'semantic-ui-react';
 
+import { Spring, animated } from 'react-spring/renderprops';
+
 import { connect } from 'react-redux';
 import { signupAsync, signup, reqFailed } from '../../actions/user';
 
@@ -15,38 +17,71 @@ class SignUpForm extends Component {
     state = {
         name: {
             value: '',
-            isValid: true
+            isInvalid: false,
         },
         email: {
             value: '',
-            isValid: true
+            isInvalid: false
+        },
+        wobble: {
+            email: false,
+            name: false
         },
         networkError: false
     };
 
     handleChange = e => {
         this.setState({
+            wobble: {
+                email: false,
+                name: false
+            },
             [e.target.name]: {
                 value: e.target.value,
-                isValid: true
             }
         });
+
+        this.validateWhileTyping(e);
     };
 
-
-    validateInput = e => {
+    validateWhileTyping = e => {
         if (!e.target.value) {
             this.setState({
                 [e.target.name]: {
                     value: '',
-                    isValid: false
+                    isInvalid: true,
                 }
             });
         } else if(e.target.name === "email" && !expression.test(String(e.target.value).toLowerCase())) {
             this.setState({
                 email: {
                     value: e.target.value,
-                    isValid: false
+                    isInvalid: true,
+                }
+            });
+        }
+    }
+
+
+    validateInputOnBlur = e => {
+        if (!e.target.value) {
+            this.setState({
+                [e.target.name]: {
+                    value: '',
+                    isInvalid: true,
+                },
+                wobble: {
+                    [e.target.name]: true
+                }
+            });
+        } else if(e.target.name === "email" && !expression.test(String(e.target.value).toLowerCase())) {
+            this.setState({
+                email: {
+                    value: e.target.value,
+                    isInvalid: true,
+                },
+                wobble: {
+                    email: true
                 }
             });
         }
@@ -57,10 +92,10 @@ class SignUpForm extends Component {
         if(!this.state.name.value && !this.state.email.value) {
             this.setState({
                 name: {
-                    isValid: false
+                    isInvalid: true
                 },
                 email: {
-                    isValid: false
+                    isInvalid: true
                 }
             });
             return;
@@ -68,7 +103,7 @@ class SignUpForm extends Component {
         if(!this.state.name.value) {
             this.setState({
                 name: {
-                    isValid: false
+                    isInvalid: true
                 }
             });
             return;
@@ -76,12 +111,12 @@ class SignUpForm extends Component {
         if(!this.state.email.value) {
             this.setState({
                 email: {
-                    isValid: false
+                    isInvalid: true
                 }
             });
             return;
         }
-        if(!this.state.name.isValid || !this.state.email.isValid) {
+        if(this.state.name.isInvalid || this.state.email.isInvalid) {
             return;
         }
 
@@ -105,32 +140,54 @@ class SignUpForm extends Component {
         return(
             <Form loading={this.props.reqSent} warning={true} className="block-centered" onSubmit={this.handleSubmit} error={this.state.networkError}>
                 <Form.Group className="d-flex justify-center">
+                <Spring reset native from={{ x: 0 }} to={{x: this.state.wobble.name && !this.state.name.value ? 1 : 0}} config={{duration: 1000}}>
+                    {({x}) => <animated.div
+                            style={{transform: x
+                                .interpolate({
+                                  range: [0, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 1],
+                                  output: [1, 0.97, 0.9, 1.1, 0.9, 1.1, 1.03, 1]
+                                })
+                                .interpolate(x => `scale(${x})`)
+                            }}>
                     <Form.Field>
                         <Form.Input 
                         placeholder='Name' 
-                        onBlur={this.validateInput}
+                        onBlur={this.validateInputOnBlur}
                         name='name' 
                         onChange={this.handleChange}
                         />
-                        {!this.state.name.isValid &&
+                        {this.state.name.isInvalid &&
                         <Message
                         warning
                         header="This field cannot be blank!"
                         />}
                     </Form.Field>
+                    </animated.div>}
+                    </Spring>
+                    <Spring reset native from={{ y: 0 }} to={{y: this.state.wobble.email ? 1 : 0}} config={{duration: 1000}}>
+                    {({y}) => <animated.div
+                            style={{transform: y
+                                .interpolate({
+                                  range: [0, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 1],
+                                  output: [1, 0.97, 0.9, 1.1, 0.9, 1.1, 1.03, 1]
+                                })
+                                .interpolate(y => `scale(${y})`)
+                            }}>
                     <Form.Field>
                         <Form.Input 
                         placeholder='Email'
-                        onBlur={this.validateInput} 
+                        onBlur={this.validateInputOnBlur} 
                         name='email' 
                         onChange={this.handleChange}
                         />
-                        {!this.state.email.isValid &&
+                        {this.state.email.isInvalid &&
                         <Message
                         warning
                         header={this.state.email.value ? errorMessage.filled : errorMessage.blank}
                         />}
                         </Form.Field>
+                        </animated.div>}
+                        </Spring>
                     <Form.Field><Form.Button className="greenish" content='GET YOUR FREE CARD' /></Form.Field>
                 </Form.Group>
                 <Message

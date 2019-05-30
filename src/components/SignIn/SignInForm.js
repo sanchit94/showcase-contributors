@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-
 import { Form, Header, Message } from 'semantic-ui-react';
+// import {Spring, animated} from 'react-spring';
+import { Spring, animated } from 'react-spring/renderprops'
 
 import SocailIconGroup from '../SocialIconGroup';
 
@@ -21,7 +22,7 @@ class SignInForm extends React.Component {
         email: '',
         error: false,
         validationError: false,
-        isBlank: true
+        isBlank: true,
     }
 
     onSubmit = e => {
@@ -50,12 +51,12 @@ class SignInForm extends React.Component {
     validateEmail = e => {
         if (!e.target.value) {
             this.setState({
-                validationError: true
+                validationError: true,
             });
         } else {
             if(!expression.test(String(e.target.value).toLowerCase())) {
                 this.setState({
-                    validationError: true
+                    validationError: true,
                 })
             }
         }
@@ -75,19 +76,33 @@ class SignInForm extends React.Component {
                 <Form.Field>
                     <label><div className="card-body-text">Sign in with your email</div></label>
                     <Form.Group className="d-flex justify-center">
-                    <Form.Field>
-                        <Form.Input 
-                        placeholder='Email' 
-                        name='email' 
-                        onChange={this.handleChange}
-                        onBlur={this.validateEmail} 
-                        error={this.state.emailError}
-                        />
-                        <Message
-                        warning
-                        header={!this.state.email ? errorMessage.blank : errorMessage.filled}
-                        />
-                    </Form.Field>
+                    <Spring reset native from={{ x: 0 }} to={{x: this.state.validationError ? 1 : 0}} config={{duration: 1000}}>
+                    {({x}) => <animated.div
+                            style={{transform: x
+                                .interpolate({
+                                  range: [0, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 1],
+                                  output: [1, 0.97, 0.9, 1.1, 0.9, 1.1, 1.03, 1]
+                                })
+                                .interpolate(x => `scale(${x})`)
+                            }}
+                            >
+                                <Form.Field>
+                                    <Form.Input 
+                                    placeholder='Email' 
+                                    name='email' 
+                                    onChange={this.handleChange}
+                                    onBlur={this.validateEmail} 
+                                    error={this.state.emailError}
+                                    />
+                                    <Message
+                                    warning
+                                    header={!this.state.email ? errorMessage.blank : errorMessage.filled}
+                                    />
+                                </Form.Field>
+                            </animated.div>}
+            {/* {({ t }) => <animated.path d={t.interpolate(interpolator)} />} */}
+                    </Spring>
+                    
                     </Form.Group>
                     <Form.Group className="d-flex justify-center">
                         <Form.Field><Form.Button className="greenish" content='LOGIN' /></Form.Field>

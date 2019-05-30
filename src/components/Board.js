@@ -6,6 +6,7 @@ import { loginAsync, login, logout } from '../actions/user';
 import { Dimmer, Loader } from 'semantic-ui-react';
 
 import List from './List';
+import AnimatedLoading from './AnimatedLoading';
 
 
 class Board extends Component {
@@ -49,9 +50,10 @@ class Board extends Component {
         if (this.props.loading) {
             return (
                 <div className="d-flex align-center block-centered vh-height">
-                    <Dimmer inverted>
+                    <Dimmer active inverted>
                     {/* active */}
-                        <Loader inverted></Loader>
+                        {/* <Loader inverted></Loader> */}
+                        <AnimatedLoading />
                     </Dimmer>
                 </div>
             );

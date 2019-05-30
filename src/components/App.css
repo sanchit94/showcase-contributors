@@ -334,11 +334,13 @@ i.inverted.circular.icon.google.large {
     margin-bottom: 0.5em;
 }
 
-div.fields.d-flex.justify-center > div > div div > input[type=text] {
+div.fields.d-flex.justify-center > div > div div > input[type=text],
+div.rodal.rodal-fade-enter > div.rodal-dialog.rodal-slideUp-enter > form > div > div > textarea {
     font-weight: 600;
 }
 
-div.fields.d-flex.justify-center > div > div div > input[type=text]::placeholder {
+div.fields.d-flex.justify-center > div > div div > input[type=text]::placeholder,
+div.rodal.rodal-fade-enter > div.rodal-dialog.rodal-slideUp-enter > form > div > div > textarea::placeholder {
     color: #708198;
     font-weight: 600;
 }

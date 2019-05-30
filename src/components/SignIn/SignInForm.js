@@ -44,7 +44,7 @@ class SignInForm extends React.Component {
                 this.setState({
                     isOpen: false
                 });
-                
+                this.history.push('/home');
             })
             .catch(err => {
                 this.props.reqFailed();

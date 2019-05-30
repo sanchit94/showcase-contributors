@@ -16,6 +16,7 @@ class Content extends Component {
                 <Route exact path="/" component={Board} />
                 <Route exact path="/logout" component={Farewell} />
                 <Route exact path="/signup" component={Signup} />
+                <Route exact path="/home" component={Board} />
             </Switch>
         );
     }

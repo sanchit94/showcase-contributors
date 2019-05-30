@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import _ from 'underscore';
 
@@ -11,6 +11,9 @@ import { useSpring, animated, config } from 'react-spring';
 
 function LikeNComment(props) {
   const [voted, setVoted] = useState((props.isLoggedIn && props.user && props.user.votes && props.user.votes.includes(props.cardId)) || false);
+  useEffect(() => {
+      setVoted((props.isLoggedIn && props.user && props.user.votes && props.user.votes.includes(props.cardId)) || false);
+  }, [props]);
   const [isOpened, setOpened] = useState(false);
   const { transform, right } = useSpring({
     transform: voted ? `scale(1.2, 1.2)` : `scale(0, 0)`,
@@ -27,14 +30,14 @@ function LikeNComment(props) {
     } else {
       _.throttle((cardId, voted) => {
         if (voted) {
-          setVoted(false);
+          setVoted(!voted);
           props.unlikeAsync(cardId)
             .then(res => {
               console.log(res);
               props.decrementVotes(cardId);
             })
         } else {
-          setVoted(true);
+          setVoted(!voted);
           props.likeAsync(props.cardId)
             .then(res => {
               console.log(res);
@@ -63,7 +66,8 @@ const mapStateToProps = state => {
   return {
     cards: state.cards,
     user: state.user,
-    isLoggedIn: state.isLoggedIn    
+    isLoggedIn: state.isLoggedIn,
+    reqSent: state.reqSent    
   };
 }
 

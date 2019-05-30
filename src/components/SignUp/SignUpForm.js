@@ -89,7 +89,7 @@ class SignUpForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        if(!this.state.name.value && !this.state.email.value) {
+        if(!this.state.name.value && (!this.state.email.value || !expression.test(String(e.target.value).toLowerCase())) ) {
             this.setState({
                 name: {
                     isInvalid: true
@@ -114,11 +114,12 @@ class SignUpForm extends Component {
                 }
             });
             return;
-        }
-        if(!this.state.email.value) {
+        } 
+        if(!this.state.email.value || !expression.test(String(this.state.email.value).toLowerCase())) {
             this.setState({
                 email: {
-                    isInvalid: true
+                    isInvalid: true,
+                    value: this.state.email.value
                 },
                 wobble: {
                     email: true
@@ -141,7 +142,7 @@ class SignUpForm extends Component {
         .catch(err => {
             this.props.reqFailed();
             this.setState({
-                error: true
+                networkError: true
             })
         });
     }

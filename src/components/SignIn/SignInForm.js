@@ -22,10 +22,17 @@ class SignInForm extends React.Component {
         email: '',
         error: false,
         validationError: false,
-        isBlank: true,
+        wobble: false,
     }
 
     onSubmit = e => {
+        if(!this.state.email || !expression.test(String(this.state.email).toLowerCase())) {
+            this.setState({
+                wobble: true,
+                validationError: true
+            });
+            return;
+        }
         if (this.state.validationError) {
             return;
         } else {
@@ -52,21 +59,24 @@ class SignInForm extends React.Component {
         if (!e.target.value) {
             this.setState({
                 validationError: true,
+                wobble: true
             });
         } else {
             if(!expression.test(String(e.target.value).toLowerCase())) {
                 this.setState({
                     validationError: true,
+                    wobble: true
                 })
             }
         }
     }
 
 	handleChange = e => {
+        console.log(e)
 		this.setState({
             [e.target.name]: e.target.value,
             validationError: false,
-            isBlank: false
+            wobble: false
         });
     }
 
@@ -76,7 +86,7 @@ class SignInForm extends React.Component {
                 <Form.Field>
                     <label><div className="card-body-text">Sign in with your email</div></label>
                     <Form.Group className="d-flex justify-center">
-                    <Spring reset native from={{ x: 0 }} to={{x: this.state.validationError ? 1 : 0}} config={{duration: 1000}}>
+                    <Spring reset native from={{ x: 0 }} to={{x: this.state.wobble ? 1 : 0}} config={{duration: 1000}}>
                     {({x}) => <animated.div
                             style={{transform: x
                                 .interpolate({

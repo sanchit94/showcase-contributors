@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { loadInitialState } from '../actions';
 import { loginAsync, login, logout } from '../actions/user';
 
-import { Dimmer, Loader } from 'semantic-ui-react';
+import { Dimmer } from 'semantic-ui-react';
 
 import List from './List';
 import AnimatedLoading from './AnimatedLoading';

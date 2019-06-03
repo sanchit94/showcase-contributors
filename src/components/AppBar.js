@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { logout } from '../actions/user';
 
 import { Image, Button } from 'semantic-ui-react';
@@ -40,9 +40,9 @@ function AppBar(props) {
     return(
         <div className="app-header">
             <Link to="/"><Image src={logo} style={style.image}/></Link>
-            <h2 className="visible-md" style={style.centerText}>Infino Contributors</h2>
+            <h2 className="visible-md" style={style.centerText}>Product Roadmap</h2>
             {props.isLoggedIn && <SuggestButton />}
-            {props.isLoggedIn && <Button as={NavLink} to="/logout" onClick={() => props.logout()} className="greenish">Sign out</Button>}
+            {props.isLoggedIn && <Button onClick={() => props.logout()} className="greenish">Sign out</Button>}
             {!props.isLoggedIn && <LoginButton />}
             {!props.isLoggedIn && <SignUpButton />}
         </div>

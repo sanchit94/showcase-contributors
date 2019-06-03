@@ -316,6 +316,25 @@ i.inverted.circular.icon.google.large {
     background-color: #fa5432!important;
 }
 
+#root > div > div.app-header > div:nth-child(3) > div > div.rodal-dialog.rodal-slideUp-enter {
+    padding: 0px;
+}
+
+.custom-color {
+    background-color: #f6f7f8;
+    padding: 15px;
+}
+
+#root > div > div.app-header > div:nth-child(3) > div > div.rodal-dialog.rodal-slideUp-enter > form > div.field > label {
+    padding-bottom: 15px;
+}
+
+#root > div > div.app-header > div:nth-child(3) > div > div.rodal-dialog.rodal-slideUp-enter > form > div.field > div:nth-child(3) {
+    margin-top: 15px;
+}
+
+
+
 /* Sign Up Page Styling */
 
 .signup-modal {

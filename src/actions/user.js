@@ -14,6 +14,12 @@ export const reqFailed = () => {
     }
 }
 
+export const reqSuccess = () => {
+    return {
+        type: actionTypes.SUCCESS_REQ
+    }
+}
+
 export const loginAsync = content => {
     return dispatch => {
         dispatch(reqSend());

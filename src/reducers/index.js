@@ -50,6 +50,9 @@ const reqReducer = (state = false, action) => {
     case actionTypes.FAILED_REQ: {
       return false;
     }
+    case actionTypes.SUCCESS_REQ: {
+      return false;
+    }
     default: {
       return state;
     }

@@ -1,4 +1,5 @@
 export const SENT_REQ = "SENT_REQ";
+export const SUCCESS_REQ = "SUCCESS_REQ";
 export const FAILED_REQ = "FAILED_REQ";
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";

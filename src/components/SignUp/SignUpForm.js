@@ -153,7 +153,7 @@ class SignUpForm extends Component {
                 <Form.Group className="d-flex justify-center">
                 <Spring reset native from={{ x: 0 }} to={{x: this.state.wobble.name && !this.state.name.value ? 1 : 0}} config={{duration: 1000}}>
                     {({x}) => <animated.div
-                            className="mr-2"
+                            className="mr-3"
                             style={{transform: x
                                 .interpolate({
                                   range: [0, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 1],
@@ -161,7 +161,7 @@ class SignUpForm extends Component {
                                 })
                                 .interpolate(x => `scale(${x})`)
                             }}>
-                    <Form.Field>
+                    <Form.Field className="form-field-smaller">
                         <Form.Input 
                         placeholder='Name' 
                         onBlur={this.validateInputOnBlur}
@@ -178,7 +178,7 @@ class SignUpForm extends Component {
                     </Spring>
                     <Spring reset native from={{ y: 0 }} to={{y: this.state.wobble.email ? 1 : 0}} config={{duration: 1000}}>
                     {({y}) => <animated.div
-                            className="mr-2"
+                            className="mr-3"
                             style={{transform: y
                                 .interpolate({
                                   range: [0, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 1],
@@ -201,7 +201,9 @@ class SignUpForm extends Component {
                         </Form.Field>
                         </animated.div>}
                         </Spring>
-                    <Form.Field><Form.Button className="greenish" content='GET YOUR FREE CARD' /></Form.Field>
+                    <Form.Field>
+                        <Form.Button className="greenish" content='GET YOUR FREE CARD' />
+                    </Form.Field>
                 </Form.Group>
                 <Message
                 error

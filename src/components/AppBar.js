@@ -41,7 +41,7 @@ function AppBar(props) {
         <div className="app-header">
             <Link to="/"><Image src={logo} style={style.image}/></Link>
             <h2 className="visible-md" style={style.centerText}>Product Roadmap</h2>
-            {props.isLoggedIn && <SuggestButton />}
+            <SuggestButton />
             {props.isLoggedIn && <Button onClick={() => props.logout()} className="greenish">Sign out</Button>}
             {!props.isLoggedIn && <LoginButton />}
             {!props.isLoggedIn && <SignUpButton />}

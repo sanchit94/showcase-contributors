@@ -47,6 +47,14 @@ body {
     margin-right: 1em!important;
 }
 
+.mr-3 {
+    margin-right: 1.5em!important;
+}
+
+.pt-3 {
+    padding-top: 1.5em;
+}
+
 .w-80 {
     width: 80%;
 }
@@ -85,6 +93,13 @@ body {
 
 .text-center {
     text-align: center;
+}
+
+.underlined.bold {
+    font-weight: bold;
+    border-bottom: 1px dotted black;
+    margin-right: 3em;
+    cursor: pointer;
 }
 
 /* Generic styles end here */
@@ -284,6 +299,10 @@ body {
     font-size: 22pt;
 }
 
+.font-md {
+    font-size: 16pt;
+}
+
 .card-body-text {
     margin-top: 1.5em;
     margin-bottom: 0.5em;
@@ -316,9 +335,10 @@ i.inverted.circular.icon.google.large {
     background-color: #fa5432!important;
 }
 
-#root > div > div.app-header > div:nth-child(3) > div > div.rodal-dialog.rodal-slideUp-enter {
+#root > div > div.app-header > div:nth-child(3) > div.login > div.rodal-dialog.rodal-slideUp-enter {
     padding: 0px;
 }
+
 
 .custom-color {
     background-color: #f6f7f8;
@@ -349,6 +369,10 @@ i.inverted.circular.icon.google.large {
     font-size: 30pt!important;
 }
 
+.extra-side-margin {
+    margin: 0 6em;
+}
+
 .ui.form .fields .field {
     margin-bottom: 0.5em;
 }
@@ -367,4 +391,34 @@ div.rodal.rodal-fade-enter > div.rodal-dialog.rodal-slideUp-enter > form > div >
 .ui.icon.header .circular.icon {
     font-size: 1.35em;
     font-family: 'Source Sans Pro';
+}
+
+.seperator {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+}
+
+.seperator::after {
+    content: "";
+    width: 1.5px;
+    height: 7em;
+    background: #78889E;
+    margin: 1em auto 0 auto;
+}
+
+@media (min-width: 634px) {
+    .form-field-smaller {
+        width: 80%;
+        float: right;
+    }
+}
+
+@media (max-width: 767px) {
+    .invisible-sm {
+        display: none!important;
+    }
 }

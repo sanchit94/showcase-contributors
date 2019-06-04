@@ -61,7 +61,7 @@ class SuggestionButton extends Component {
     render() {
         return(
             <div>
-                <Button onClick={this.toggleModal} className="tertiary mr-2">Suggestions</Button>
+                <div onClick={this.toggleModal} className="underlined bold">Have a cool idea?</div>
                 <Rodal closeOnEsc={true} width="300" height="400" animation="slideUp" visible={this.state.isOpen} onClose={this.CloseModal}>
                     <div className="header-text">Welcome</div>
                     <span role="img" aria-label="Namaste" className="font-lg">🙏</span>

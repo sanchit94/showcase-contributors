@@ -40,23 +40,30 @@ function SignUpModal() {
                     <Grid.Row>
                         <SocialIconGroup />
                     </Grid.Row>
-                    <Grid.Row>
+                    <Grid.Row className="extra-side-margin">
                         <Grid.Column mobile={16} tablet={7} computer={7}>
                         <Header as="h3" className="d-block text-center block-centered" icon>
                             <Icon circular name="">1</Icon>
                             Join the waitlist
                             <Header.Subheader>Sign up using the above form to reserve your spot<br/> when we launch (Limited Spots)</Header.Subheader>
                         </Header>
-                            <Image src={waitlist} width="50%" className="block-centered" />
+                            <Image src={waitlist} width="45%" className="block-centered" />
                         </Grid.Column>
-                        <Grid.Column computer={2}></Grid.Column>
+                        <Grid.Column computer={2}>
+                            <div className="invisible-sm">
+                                <div className="seperator invisible-sm mt-4"></div>
+                                <div className="seperator invisible-sm pt-3">
+                                    <span>&amp;</span>
+                                </div>
+                            </div>
+                        </Grid.Column>
                         <Grid.Column mobile={16} tablet={7} computer={7}>
                             <Header as="h3" className="d-block block-centered text-center" icon>
                             <Icon circular name="">2</Icon>
                             Get Your Free Card
                             <Header.Subheader>Invite 2 or more friends to get a FREE CARD and <br/> preferential access to Infino. (Very Limited Spots)</Header.Subheader>
                             </Header>
-                            <Image src={card} width="50%" className="block-centered"/>
+                            <Image src={card} width="45%" className="block-centered"/>
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>

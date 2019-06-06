@@ -40,6 +40,18 @@ export const login = data => {
     }
 }
 
+export const loginFB = () => {
+    return () => {
+        return Axios.get(`${userDomain}/users/auth/facebook`);
+    }
+}
+
+export const loginTwitter = () => {
+    return () => {
+        return Axios.get(`${userDomain}/users/auth/twitter`);
+    }
+}
+
 export const logout = () => {
     return {
         type: actionTypes.LOGOUT

@@ -5,6 +5,7 @@
   "dependencies": {
     "@vx/gradient": "0.0.189",
     "axios": "^0.18.0",
+    "firebase": "^6.1.1",
     "flubber": "^0.4.2",
     "less": "^3.9.0",
     "react": "^16.8.6",

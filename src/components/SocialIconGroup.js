@@ -1,31 +1,42 @@
 import React, { Component } from 'react';
 import { Icon } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import * as firebase from 'firebase';
 
 import { loginFB, loginTwitter } from '../actions/user';
 
 class SocialIconGroup extends Component {
+    componentDidMount = () => {
+        
+    }
 
-        onSignIn = (googleUser) => {
-        // Useful data for your client-side scripts:
-        var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-        console.log('Full Name: ' + profile.getName());
-        console.log('Given Name: ' + profile.getGivenName());
-        console.log('Family Name: ' + profile.getFamilyName());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("Email: " + profile.getEmail());
+    glogin = () => {
+        console.log('meme')
+        var provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            var token = result.credential.accessToken;
+            console.log(token);
+            // The signed-in user info.
+            var user = result.user;
+            console.log(user);
+            // ...
+          }).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // The email of the user's account used.
+            var email = error.email;
+            // The firebase.auth.AuthCredential type that was used.
+            var credential = error.credential;
+            // ...
+          });
+    }
 
-        // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);
-        }
     render() {
         return(
             <div className="block-centered text-center">
-                <Icon circular inverted size="large" name="facebook f" >
-                    <div class="g-signin2" onClick={this.onSignIn} data-onsuccess="onSignIn" data-theme="dark"></div>
-                </Icon>
+                <Icon onClick={this.glogin} circular inverted size="large" name="facebook f" />
                 <Icon circular inverted size="large" name="twitter" />
                 <Icon circular inverted size="large" name="google" />                
             </div>

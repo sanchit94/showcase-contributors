@@ -11,9 +11,10 @@ class SocialIconGroup extends Component {
     }
 
     glogin = () => {
-        console.log('meme')
-        var provider = new firebase.auth.GoogleAuthProvider();
+        console.log('meme');
+        let provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider).then(function(result) {
+            console.log("Does it go here");
             // This gives you a Google Access Token. You can use it to access the Google API.
             var token = result.credential.accessToken;
             console.log(token);

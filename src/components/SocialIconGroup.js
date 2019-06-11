@@ -40,9 +40,9 @@ class SocialIconGroup extends Component {
     render() {
         return(
             <div className="block-centered text-center">
-                <Icon onClick={this.glogin} circular inverted size="large" name="facebook f" />
+                <Icon circular inverted size="large" name="facebook f" />
                 <Icon circular inverted size="large" name="twitter" />
-                <Icon circular inverted size="large" name="google" />                
+                <Icon onClick={this.glogin} circular inverted size="large" name="google" />                
             </div>
         );
     }

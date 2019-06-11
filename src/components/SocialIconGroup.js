@@ -3,14 +3,12 @@ import { Icon } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import * as firebase from 'firebase';
 
-import { loginFB, loginTwitter } from '../actions/user';
+import { loginFB, loginTwitter, login, loginAsync } from '../actions/user';
 
 class SocialIconGroup extends Component {
-    componentDidMount = () => {
-        
-    }
-
+    
     glogin = () => {
+        const that = this;
         console.log('meme');
         let provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -21,6 +19,10 @@ class SocialIconGroup extends Component {
             // The signed-in user info.
             var user = result.user;
             console.log(user);
+            that.props.loginAsync(user.email)
+            .then(res => {
+                that.props.login(res.data);
+            })
             // ...
           }).catch(function(error) {
               console.log("errored", error);
@@ -51,5 +53,5 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { loginFB, loginTwitter })(SocialIconGroup);
+export default connect(mapStateToProps, { loginFB, loginAsync, login, loginTwitter })(SocialIconGroup);
 

@@ -2,11 +2,10 @@ import Axios from "axios";
 import * as actionTypes from "./types";
 import { userDomain, domain } from "../constants";
 
-const email = localStorage.getItem('user');
 
 const vote = content => {
     return Axios.post(`${userDomain}/users/vote`, {
-        email,
+        email: localStorage.getItem('user'),
         cardId: content
     });
 }

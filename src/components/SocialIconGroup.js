@@ -23,6 +23,7 @@ class SocialIconGroup extends Component {
             console.log(user);
             // ...
           }).catch(function(error) {
+              console.log("errored", error);
             // Handle Errors here.
             var errorCode = error.code;
             var errorMessage = error.message;

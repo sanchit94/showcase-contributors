@@ -61,6 +61,7 @@ class SocialIconGroup extends Component {
             var token = result.credential.accessToken;
             // The signed-in user info.
             var user = result.user;
+            console.log(user);
             this.props.loginAsync(user.email)
             .then(res => {
                 this.props.login(res.data);

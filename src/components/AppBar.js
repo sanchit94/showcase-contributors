@@ -24,41 +24,32 @@ const CentralText = styled.h2`
     margin: auto
 `;
 
-const style = {
-    centerText: {
-        
-    },
-    dropdown: {
-        marginRight: "6em"
-    }
-}
-
-
 
 function AppBar(props) {
 
-    const logout = () => {
-        firebase.auth().signOut().then(function() {
-            props.logout();
-            // Sign-out successful.
-          }).catch(function(error) {
-            // An error happened.
-          });
-    }
+	const logout = () => {
+		firebase.auth().signOut()
+		.then(function() {
+				props.logout();
+				// Sign-out successful.
+		}).catch(function(error) {
+			console.log(error);
+		});
+	}
 
-    return(
-        <div className="app-header">
-            <Link to="/"><LogoImage src={logo}/></Link>
-            <CentralText className="visible-md">Product Roadmap</CentralText>
-            <SuggestButton />
-            {props.isLoggedIn && <Button onClick={logout} className="greenish">Sign out</Button>}
-            {!props.isLoggedIn && <LoginButton />}
-            {!props.isLoggedIn && <SignUpButton />}
-        </div>
-    );
+	return(
+			<div className="app-header">
+					<Link to="/"><LogoImage src={logo}/></Link>
+					<CentralText className="visible-md">Product Roadmap</CentralText>
+					<SuggestButton />
+					{props.isLoggedIn && <Button onClick={logout} className="greenish">Sign out</Button>}
+					{!props.isLoggedIn && <LoginButton />}
+					{!props.isLoggedIn && <SignUpButton />}
+			</div>
+	);
 
 }
-    
+
 
 const mapStateToProps = store => {
     return {

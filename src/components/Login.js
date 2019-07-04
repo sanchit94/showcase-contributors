@@ -10,12 +10,12 @@ export default function(props) {
     }
 
     return(
-        <Grid verticalAlign='middle' centered>
-            <Grid.Row>
-                <Grid.Column mobile={16} tablet={8} computer={4}>
-                    <LoginForm navigate={navigateToContent} />
-                </Grid.Column>
-            </Grid.Row>
-        </Grid>
+			<Grid verticalAlign='middle' centered>
+					<Grid.Row>
+							<Grid.Column mobile={16} tablet={8} computer={4}>
+									<LoginForm navigate={navigateToContent} />
+							</Grid.Column>
+					</Grid.Row>
+			</Grid>
     );
 }

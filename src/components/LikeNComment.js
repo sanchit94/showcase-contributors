@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { useSpring, animated, config } from 'react-spring';
 import _ from 'underscore';
+import { Icon } from 'semantic-ui-react';
 
 import ModalTopAligned from './ReqModal';
-import { Icon } from 'semantic-ui-react';
-import { likeAsync, unlikeAsync } from '../actions/vote';
-import { incrementVotes, decrementVotes } from '../actions/vote';
-import { useSpring, animated, config } from 'react-spring';
+import { likeAsync, unlikeAsync, incrementVotes, decrementVotes } from '../actions/vote';
 
 
 function LikeNComment(props) {
-  const [voted, setVoted] = useState((props.isLoggedIn && props.user && props.user.votes && props.user.votes.includes(props.cardId)) || false);
+
+	const [voted, setVoted] = useState((props.isLoggedIn &&
+		props.user && props.user.votes && props.user.votes.includes(props.cardId)) || false);
+
   useEffect(() => {
-      setVoted((props.isLoggedIn && props.user && props.user.votes && props.user.votes.includes(props.cardId)) || false);
-  }, [props]);
-  const [isOpened, setOpened] = useState(false);
+			setVoted((props.isLoggedIn &&
+				props.user && props.user.votes && props.user.votes.includes(props.cardId)) || false);
+	}, [props]);
+
+	const [isOpened, setOpened] = useState(false);
+
   const { transform, right } = useSpring({
     transform: voted ? `scale(1.2, 1.2)` : `scale(0, 0)`,
     right: voted ? `0em` : `0.1em`,
@@ -22,7 +27,11 @@ function LikeNComment(props) {
       transform: 'scale(0, 0)'
     },
     config: config.wobbly
-  });
+	});
+
+	const closeModal = () => {
+    setOpened(!isOpened);
+  }
 
   const vote = () => {
     if(!props.isLoggedIn) {
@@ -48,14 +57,12 @@ function LikeNComment(props) {
     }
   }
 
-  const closeModal = () => {
-    setOpened(!isOpened);
-  }
-
 	return(
 		<div>
       <Icon className="pointer-cursor" size="large" name="heart outline" color="grey" onClick={vote} />
-      <span style={{verticalAlign: "bottom", marginLeft: "0.2em"}}>{props.cards[props.index] && props.cards[props.index].votes}</span>
+			<span style={{verticalAlign: "bottom", marginLeft: "0.2em"}}>
+				{ props.cards[props.index] && props.cards[props.index].votes }
+			</span>
       <animated.div className="pointer-cursor" style={{transform, right, marginTop: "-1.55em", position: "relative", width: "fit-content"}}><Icon onClick={vote} size="large" color="red" name="heart" /></animated.div>
       <ModalTopAligned open={isOpened} closeModal={closeModal} />
 		</div>
@@ -67,7 +74,7 @@ const mapStateToProps = state => {
     cards: state.cards,
     user: state.user,
     isLoggedIn: state.isLoggedIn,
-    reqSent: state.reqSent    
+    reqSent: state.reqSent
   };
 }
 

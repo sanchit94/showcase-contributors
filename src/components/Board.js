@@ -10,8 +10,8 @@ import AnimatedLoading from './AnimatedLoading';
 
 
 class Board extends Component {
-       
-    componentWillMount = () => {
+
+    componentDidMount = () => {
         if (localStorage.getItem('user')) {
             this.props.loginAsync(localStorage.getItem('user'))
             .then(res => {
@@ -26,7 +26,7 @@ class Board extends Component {
             this.props.loadInitialState();
         }
     }
-        
+
 
     renderHeading = () => {
         return this.props.boards[1].listIds.map(listId => {
@@ -57,7 +57,6 @@ class Board extends Component {
             );
         }
         return(
-            
             <div className="app-over content">
                 <header className="app-bar mt-4">
                 <div className="d-flex">
@@ -81,4 +80,4 @@ const mapStateToProps = store => ({
     loading: store.loading
 })
 
-export default connect(mapStateToProps, { loginAsync, login, logout, loadInitialState })(Board); 
+export default connect(mapStateToProps, { loginAsync, login, logout, loadInitialState })(Board);

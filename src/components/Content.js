@@ -1,23 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { Switch, Route } from 'react-router-dom';
 
 import Board from './Board';
 import Signup from './Signup';
 
-import { Switch, Route } from 'react-router-dom';
 
-class Content extends Component {
-    
-    render() {
-        return(
-            <Switch>
-                <Route exact path="/" component={Board} />
-                <Route exact path="/signup" component={Signup} />
-                <Route exact path="/home" component={Board} />
-            </Switch>
-        );
-    }
+function Content() {
 
+	return(
+		<Switch>
+			<Route exact path="/" component={Board} />
+			<Route exact path="/signup" component={Signup} />
+			<Route exact path="/home" component={Board} />
+		</Switch>
+	);
 }
 
 const mapStateToProps = store => ({
@@ -26,4 +23,4 @@ const mapStateToProps = store => ({
     loading: store.loading
 })
 
-export default connect(mapStateToProps, {})(Content); 
+export default connect(mapStateToProps, {})(Content);

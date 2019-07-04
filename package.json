@@ -43,6 +43,7 @@
     "@craco/craco": "^5.2.1",
     "cpy-cli": "^2.0.0",
     "craco-less": "^1.7.0",
+    "eslint-watch": "^5.1.2",
     "gulp": "^4.0.2",
     "semantic-ui-less": "^2.4.1"
   }

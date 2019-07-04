@@ -51,8 +51,6 @@ class Board extends Component {
             return (
                 <div className="d-flex align-center block-centered vh-height">
                     <Dimmer active inverted>
-                    {/* active */}
-                        {/* <Loader inverted></Loader> */}
                         <AnimatedLoading />
                     </Dimmer>
                 </div>

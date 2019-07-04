@@ -1,25 +1,32 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logout } from '../actions/user';
 import * as firebase from 'firebase';
-
 import { Image, Button } from 'semantic-ui-react';
-import logo from '../images/logo.png';
+import styled from 'styled-components';
+
 import SuggestButton from './SuggestFeatButton';
 import LoginButton from './SignIn/SignInModalButton';
 import SignUpButton from './SignUp/SignUpModalButton';
+import logo from '../images/logo.png';
+
+import { logout } from '../actions/user';
+
+const LogoImage = styled(Image)`
+    height: 48px;
+    marginRight : auto;
+`;
+
+const CentralText = styled.h2`
+    flex-grow : 1;
+    line-height : 1em;
+    text-align: left;
+    margin: auto
+`;
 
 const style = {
-    image: {
-        height: "48px",
-        marginRight : "auto",
-    },
     centerText: {
-        flexGrow : "1",
-        lineHeight : "1em",
-        textAlign: "left",
-        margin: "auto"
+        
     },
     dropdown: {
         marginRight: "6em"
@@ -39,18 +46,10 @@ function AppBar(props) {
           });
     }
 
-    
-    // const getName = () => {
-    //     if(localStorage.getItem('username')) {
-    //         return `Hello, ${localStorage.getItem('username')}`
-    //     }
-    //     return "Hello, Contributor"
-    // }
-
     return(
         <div className="app-header">
-            <Link to="/"><Image src={logo} style={style.image}/></Link>
-            <h2 className="visible-md" style={style.centerText}>Product Roadmap</h2>
+            <Link to="/"><LogoImage src={logo}/></Link>
+            <CentralText className="visible-md">Product Roadmap</CentralText>
             <SuggestButton />
             {props.isLoggedIn && <Button onClick={logout} className="greenish">Sign out</Button>}
             {!props.isLoggedIn && <LoginButton />}

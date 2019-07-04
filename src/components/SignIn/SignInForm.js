@@ -18,6 +18,7 @@ const errorMessage = {
 };
 
 class SignInForm extends React.Component {
+    
     state = {
         email: '',
         error: false,
